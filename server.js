@@ -1,6 +1,9 @@
 var express       = require('express');
 var app           = express();
 var bodyParser    = require('body-parser');
+var db            = require('./models');
+var User          = db.User;
+var Task          = db.Task;
 var tasks         = [{
   id : "Task-ID #001",
   title : "wash Zuko",
@@ -49,4 +52,5 @@ app.delete('/api/:id', function(req, res) {
 
 var server = app.listen(4000, function() {
   console.log('Server online at ', server.address());
+  db.sequelize.sync();
 });
