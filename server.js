@@ -4,31 +4,27 @@ var bodyParser    = require('body-parser');
 var db            = require('./models');
 var User          = db.User;
 var Task          = db.Task;
-var tasks         = [{
-  id : "Task-ID #001",
-  title : "wash Zuko",
-  priority : 1,
-  status : "To Do",
-  createdBy : "Corina",
-  description : "Put Zuko in shower and shampoo him, then rinse. Don't forget to dry him. Shake is inside shower, not out",
-  assignedTo : "Steven"
-}];
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/api', function(req, res) {
-    res.send(tasks);
+  Task.find()
+    .then(function(tasks) {
+      console.log(tasks);
+      res.send(tasks);
+    });
 });
 
 app.post('/api', function(req, res) {
-  var nextId = tasks.length + 1;
-  var newTask = req.body.task;
-  newTask.id = "Task-ID #" + nextId;
-  newTask.status = "To Do";
-  // createdBy : task.creator,
-  // assignedTo : task.assignedTo
-  tasks.push(newTask);
+  Task.create({
+    title : req.body.task.title,
+    priority: req.body.task.priority,
+    status : "To Do",
+    description : req.body.task.description,
+    assignedTo : "a person",
+    UserId : 1
+  });
 });
 
 app.put('/api', function(req, res) {
@@ -40,7 +36,6 @@ app.put('/api', function(req, res) {
     }
   }
 });
-
 
 app.delete('/api/:id', function(req, res) {
   for (var i = 0; i < tasks.length; i++) {

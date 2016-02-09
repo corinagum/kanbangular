@@ -1,9 +1,9 @@
 angular.module('app')
   .controller('NewTaskController', ['$scope', '$rootScope', 'TaskService', function ($scope, $rootScope, TaskService) {
+      $rootScope.tasks = [];
       $scope.addTask = function (newTask) {
         TaskService.addTask(newTask);
         var nextId = $rootScope.tasks.length + 1;
-        newTask.id = "Task-ID #" + nextId;
         newTask.status = "To Do";
         // createdBy : task.creator,
         // assignedTo : task.assignedTo
@@ -11,7 +11,13 @@ angular.module('app')
       };
       TaskService.getTasks()
       .then(function successCallback(response) {
-        $rootScope.tasks = response.data;
+        if(response !== null) {
+          if(!Array.isArray(response.data)) {
+            $rootScope.tasks = [response.data];
+          } else {
+            $rootScope.tasks = response.data;
+          }
+        }
       });
     }])
 
