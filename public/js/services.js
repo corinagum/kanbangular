@@ -1,6 +1,14 @@
 angular.module('app')
     .service("TaskService", ['$http', function ($http) {
 
+    this.nextStatus = function(task) {
+      if(task.status === "To Do") {
+        task.status = "In Progress";
+      } else {
+        task.status = "Done";
+      }
+    };
+// START CRUD OPERATIONS \\
 // GET
     this.getTasks = function() {
       return $http.get('/api');
@@ -12,12 +20,10 @@ angular.module('app')
       });
     };
 
-    this.nextStatus = function(task) {
-      if(task.status === "To Do") {
-        task.status = "In Progress";
-      } else {
-        task.status = "Done";
-      }
-    };
+// PUT
 
+// DELETE
+    this.deleteTask = function(task) {
+      return $http.delete('/api/' + task.id);
+    };
 }]);

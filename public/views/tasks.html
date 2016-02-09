@@ -23,14 +23,16 @@
     <div id="to-do">
       <h2>To Do</h2>
       <ul class="tasks">
-        <li ng-repeat="task in $root.getTasks | filter:task.status='To Do'">
+        <li ng-repeat="task in $root.tasks | filter:task.status='To Do'">
           <h4 class="task_title"> {{task.title}}</h4>
           <p class="task_priority">{{task.priority}}</p>
           <p class="task_creator">{{task.createdBy}}</p>
           <p class="task_description">{{task.description}}</p>
           <p class="task_assignedTo">{{task.assignedTo}}</p>
           <div class="commit">
-            <button type="button" ng-click="nextStatus(task);" >Start Task</button>
+            <button type="button" ng-click="nextStatus(task);" >Start</button>
+            <button type="button" ng-click="editTask(task);" >Edit</button>
+            <button type="button" ng-click="deleteTask(task);" >Delete</button>
           </div>
          </li>
       </ul>
@@ -38,14 +40,16 @@
     <div id="in-progress">
       <h2>In Progress</h2>
       <ul class="tasks">
-      <li ng-repeat="task in $root.getTasks | filter:task.status='In Progress'">
+      <li ng-repeat="task in $root.tasks | filter:task.status='In Progress'">
         <h4 class="task_title"> {{task.title}}</h4>
         <p class="task_priority">{{task.priority}}</p>
         <p class="task_creator">{{task.creator}}</p>
         <p class="task_description">{{task.description}}</p>
         <p class="task_assignedTo">{{task.assignedTo}}</p>
         <div class="commit">
-          <button type="button" ng-click="nextStatus(task);" >Finish Task</button>
+          <button type="button" ng-click="nextStatus(task);" >Finish</button>
+          <button type="button" ng-click="editTask(task);" >Edit</button>
+          <button type="button" ng-click="deleteTask(task);" >Delete</button>
         </div>
        </li>
       </ul>
@@ -53,12 +57,16 @@
     <div id="done">
       <h2>Done</h2>
       <ul class="tasks">
-      <li ng-repeat="task in $root.getTasks | filter:task.status='Done'">
+      <li ng-repeat="task in $root.tasks | filter:task.status='Done'">
         <h4 class="task_title"> {{task.title}}</h4>
         <p class="task_priority">{{task.priority}}</p>
         <p class="task_creator">{{task.creator}}</p>
         <p class="task_description">{{task.description}}</p>
         <p class="task_assignedTo">{{task.assignedTo}}</p>
+        <div class="commit">
+          <button type="button" ng-click="editTask(task);" >Edit</button>
+          <button type="button" ng-click="deleteTask(task);" >Delete</button>
+        </div>
        </li>
       </ul>
     </div>

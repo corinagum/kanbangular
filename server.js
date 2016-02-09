@@ -26,7 +26,25 @@ app.post('/api', function(req, res) {
   // createdBy : task.creator,
   // assignedTo : task.assignedTo
   tasks.push(newTask);
-  console.log(tasks);
+});
+
+// app.put('/api', function(req, res) {
+//   var nextId = tasks.length + 1;
+//   var newTask = req.body.task;
+//   newTask.id = "Task-ID #" + nextId;
+//   newTask.status = "To Do";
+//   // createdBy : task.creator,
+//   // assignedTo : task.assignedTo
+//   tasks.push(newTask);
+// });
+
+
+app.delete('/api/:id', function(req, res) {
+  for (var i = 0; i < tasks.length; i++) {
+    if(tasks[i].id === req.params.id) {
+      tasks.splice(i, 1);
+    }
+  }
 });
 
 var server = app.listen(4000, function() {
