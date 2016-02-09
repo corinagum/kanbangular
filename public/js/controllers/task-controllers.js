@@ -1,9 +1,21 @@
 angular.module('app')
-  .controller('NewTaskController', ['$scope', 'TaskService', function ($scope, TaskService) {
-    console.log(TaskService.addTask);
-    $scope.addTask = TaskService.addTask;
-  }])
-  .controller('TaskController', ['$scope', 'TaskService', function ($scope, TaskService) {
-    $scope.getTasks = TaskService.getTasks;
+  .controller('NewTaskController', ['$scope', '$rootScope', 'TaskService', function ($scope, $rootScope, TaskService) {
+      $scope.addTask = function (newTask) {
+        TaskService.addTask(newTask)
+        .then(function successCallback(response) {
+          TaskService.getTasks()
+          .then(function successCallback(response) {
+            $rootScope.getTasks = response.data;
+            console.log($rootScope.getTasks);
+          });
+        });
+      };
+    }])
+
+  .controller('TaskController', ['$scope', '$rootScope','TaskService', function ($scope, $rootScope, TaskService) {
+    TaskService.getTasks()
+      .then(function successCallback(response) {
+        $rootScope.getTasks = response.data;
+      });
     $scope.nextStatus = TaskService.nextStatus;
   }]);

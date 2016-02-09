@@ -1,24 +1,15 @@
-(function (){
-  function TaskService() {
-     var tasks = [];
+angular.module('app')
+    .service("TaskService", ['$http', function ($http) {
 
+// GET
     this.getTasks = function() {
-      return tasks;
+      return $http.get('/api');
     };
-
+// POST
     this.addTask = function(task) {
-      var nextId = tasks.length + 1;
-      task.id = nextId;
-      tasks.push({
-        id : "Task-ID #" + nextId,
-        title : task.title,
-        priority : task.priority,
-        status : "To Do",
-        createdBy : task.creator,
-        description : task.description,
-        assignedTo : task.assignedTo
+      return $http.post('/api', {
+        task: task
       });
-      return console.log(tasks[nextId-1]);
     };
 
     this.nextStatus = function(task) {
@@ -27,9 +18,6 @@
       } else {
         task.status = "Done";
       }
-      console.log(task, "nextStatus");
     };
-  }
-  angular.module('app')
-    .service("TaskService", TaskService);
-})();
+
+}]);
