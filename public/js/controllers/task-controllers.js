@@ -22,6 +22,17 @@ angular.module('app')
       });
     $scope.nextStatus = TaskService.nextStatus;
 
+    $scope.editTask = function(task) {
+      TaskService.editTask(task);
+      for (var i = 0; i < $rootScope.tasks.length; i++) {
+        if($rootScope.tasks[i].id === task.id) {
+          $rootScope.tasks[i].title = task.title;
+          $rootScope.tasks[i].description = task.description;
+          $rootScope.tasks[i].priority = task.priority;
+        }
+      }
+    };
+
     $scope.deleteTask = function (task) {
       TaskService.deleteTask(task);
     for (var i = 0; i < $rootScope.tasks.length; i++) {

@@ -21,6 +21,12 @@ angular.module('app')
     };
 
 // PUT
+  this.editTask = function(task) {
+    return $http.put('/api', {
+      task : task
+    });
+  };
+
 
 // DELETE
     this.deleteTask = function(task) {

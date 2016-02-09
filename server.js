@@ -28,15 +28,15 @@ app.post('/api', function(req, res) {
   tasks.push(newTask);
 });
 
-// app.put('/api', function(req, res) {
-//   var nextId = tasks.length + 1;
-//   var newTask = req.body.task;
-//   newTask.id = "Task-ID #" + nextId;
-//   newTask.status = "To Do";
-//   // createdBy : task.creator,
-//   // assignedTo : task.assignedTo
-//   tasks.push(newTask);
-// });
+app.put('/api', function(req, res) {
+  for (var i = 0; i < tasks.length; i++) {
+    if(tasks[i].id === req.body.task.id) {
+      tasks[i].title = req.body.task.title;
+      tasks[i].description = req.body.task.description;
+      tasks[i].priority = req.body.task.priority;
+    }
+  }
+});
 
 
 app.delete('/api/:id', function(req, res) {

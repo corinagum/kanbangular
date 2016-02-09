@@ -1,4 +1,4 @@
-angular.module("app", ['ngRoute']);
+angular.module("app", ['ngRoute', 'xeditable']);
 
 var app = angular.module("app");
 
@@ -16,6 +16,6 @@ app
       requireBase : false
     });
   }])
-  .run(function(){
-    //initialize
+  .run(function(editableOptions){
+    editableOptions.theme = 'bs3';
   });
