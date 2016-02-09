@@ -27,8 +27,8 @@
       </fieldset>
     </form>
   </div>
-  <div id="kanban">
-    <div id="to-do" ng-controller="TaskController">
+  <div id="kanban" ng-controller="TaskController">
+    <div id="to-do">
       <h2>To Do</h2>
       <ul class="tasks">
         <li ng-repeat="task in getTasks() | filter:task.status='To Do'">
@@ -37,13 +37,13 @@
           <p class="task_creator">{{task.creator}}</p>
           <p class="task_description">{{task.description}}</p>
           <p class="task_assignedTo">{{task.assignedTo}}</p>
+          <div class="commit">
+            <button type="button" ng-click="nextStatus(task);" >Start Task</button>
+          </div>
          </li>
       </ul>
-<!--       <div class="commit">
-        <button type="button" ng-click="addTask(new_task); new_task=null" >Start Task</button>
-      </div> -->
     </div>
-    <div id="in-progress" ng-controller="TaskController">
+    <div id="in-progress">
       <h2>In Progress</h2>
       <ul class="tasks">
       <li ng-repeat="task in getTasks() | filter:task.status='In Progress'">
@@ -52,13 +52,13 @@
         <p class="task_creator">{{task.creator}}</p>
         <p class="task_description">{{task.description}}</p>
         <p class="task_assignedTo">{{task.assignedTo}}</p>
+        <div class="commit">
+          <button type="button" ng-click="nextStatus(task);" >Finish Task</button>
+        </div>
        </li>
       </ul>
-<!--       <div class="commit">
-        <button type="button" ng-click="addTask(new_task); new_task=null" >Finish Task</button>
-      </div> -->
     </div>
-    <div id="done" ng-controller="TaskController">
+    <div id="done">
       <h2>Done</h2>
       <ul class="tasks">
       <li ng-repeat="task in getTasks() | filter:task.status='Done'">

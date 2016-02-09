@@ -5,4 +5,5 @@ angular.module('app')
   }])
   .controller('TaskController', ['$scope', 'TaskService', function ($scope, TaskService) {
     $scope.getTasks = TaskService.getTasks;
+    $scope.nextStatus = TaskService.nextStatus;
   }]);

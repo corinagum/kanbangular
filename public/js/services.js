@@ -18,6 +18,7 @@
         description : task.description,
         assignedTo : task.assignedTo
       });
+      return console.log(tasks[nextId-1]);
     };
 
     this.nextStatus = function(task) {
@@ -26,6 +27,7 @@
       } else {
         task.status = "Done";
       }
+      console.log(task, "nextStatus");
     };
   }
   angular.module('app')
