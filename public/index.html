@@ -4,27 +4,73 @@
   <meta charset="UTF-8">
   <title>Kanbangular</title>
 </head>
-<body>
-  <h1>Kanbangular</h1>
-  <form>
-    <fieldset>
-     <div class="new_task_title">
-       <label for="new_task_title">Title</label>
-       <input id="new_task_title" type="text" ng-model="new_task.title">
-     </div>
-     <div class="new_task_description">
-       <label for="new_task_description">Author</label>
-       <input id="new_task_description" type="text" ng-model="new_task.description">
-     </div>
-     <div class="new_task_priority">
-       <label for="new_task_priority">Author</label>
-       <input id="new_task_priority" type="text" ng-model="new_task.priority">
-     </div>
-     <div class="commit">
-       <button type="button" ng-click="TaskService.addTask(new_task); new_task=null" >Add Task</button>
-     </div>
-    </fieldset>
-  </form>
+<body ng-app="app">
+  <h1>{{ "Kanbangular" }}</h1>
+  <div ng-controller="NewTaskController">
+    <form>
+      <fieldset>
+       <div class="new_task_title">
+         <label for="new_task_title">Title</label>
+         <input id="new_task_title" type="text" ng-model="new_task.title" autofocus>
+       </div>
+       <div class="new_task_description">
+         <label for="new_task_description">Description </label>
+         <input id="new_task_description" type="text" ng-model="new_task.description">
+       </div>
+       <div class="new_task_priority">
+         <label for="new_task_priority">Priority Level</label>
+         <input id="new_task_priority" type="text" ng-model="new_task.priority">
+       </div>
+       <div class="commit">
+         <button type="button" ng-click="addTask(new_task); new_task=null" >Add Task</button>
+       </div>
+      </fieldset>
+    </form>
+  </div>
+  <div id="kanban">
+    <div id="to-do" ng-controller="TaskController">
+      <h2>To Do</h2>
+      <ul class="tasks">
+        <li ng-repeat="task in getTasks() | filter:task.status='To Do'">
+          <h4 class="task_title"> {{task.title}}</h4>
+          <p class="task_priority">{{task.priority}}</p>
+          <p class="task_creator">{{task.creator}}</p>
+          <p class="task_description">{{task.description}}</p>
+          <p class="task_assignedTo">{{task.assignedTo}}</p>
+         </li>
+      </ul>
+<!--       <div class="commit">
+        <button type="button" ng-click="addTask(new_task); new_task=null" >Start Task</button>
+      </div> -->
+    </div>
+    <div id="in-progress" ng-controller="TaskController">
+      <h2>In Progress</h2>
+      <ul class="tasks">
+      <li ng-repeat="task in getTasks() | filter:task.status='In Progress'">
+        <h4 class="task_title"> {{task.title}}</h4>
+        <p class="task_priority">{{task.priority}}</p>
+        <p class="task_creator">{{task.creator}}</p>
+        <p class="task_description">{{task.description}}</p>
+        <p class="task_assignedTo">{{task.assignedTo}}</p>
+       </li>
+      </ul>
+<!--       <div class="commit">
+        <button type="button" ng-click="addTask(new_task); new_task=null" >Finish Task</button>
+      </div> -->
+    </div>
+    <div id="done" ng-controller="TaskController">
+      <h2>Done</h2>
+      <ul class="tasks">
+      <li ng-repeat="task in getTasks() | filter:task.status='Done'">
+        <h4 class="task_title"> {{task.title}}</h4>
+        <p class="task_priority">{{task.priority}}</p>
+        <p class="task_creator">{{task.creator}}</p>
+        <p class="task_description">{{task.description}}</p>
+        <p class="task_assignedTo">{{task.assignedTo}}</p>
+       </li>
+      </ul>
+    </div>
+  </div>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.min.js"></script>
