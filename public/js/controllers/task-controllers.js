@@ -3,10 +3,18 @@ angular.module('app')
 
       TaskService.getTasks()
         .then(function successCallback(response) {
-          // console.log(deferred.promise.inspect().state);
           $scope.tasks = response.data;
         });
-      $scope.nextStatus = TaskService.nextStatus;
+
+      $scope.nextStatus = function(task){
+        TaskService.nextStatus(task)
+          .then(function(response) {
+            console.log(response);
+              $scope.tasks = response.data;
+          }, function(err) {
+            console.log(err);
+          });
+      };
 
 
       $scope.addTask = function (newTask) {
@@ -21,14 +29,13 @@ angular.module('app')
 
 
       $scope.editTask = function(task) {
-        TaskService.editTask(task);
-        for (var i = 0; i < $scope.tasks.length; i++) {
-          if($scope.tasks[i].id === task.id) {
-            $scope.tasks[i].title = task.title;
-            $scope.tasks[i].description = task.description;
-            $scope.tasks[i].priority = task.priority;
-          }
-        }
+        TaskService.editTask(task)
+          .then(function(response) {
+            console.log(response);
+              $scope.tasks = response.data;
+          }, function(err) {
+            console.log(err);
+        });
       };
 
       $scope.deleteTask = function (task) {

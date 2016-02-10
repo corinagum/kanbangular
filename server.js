@@ -16,13 +16,6 @@ app.get('/api', function(req, res) {
 });
 
 app.post('/api', function(req, res) {
-  // User.create({
-  //   username: "Nick",
-  //   password: "crap",
-  //   email:"poopypirate@gmail.com",
-  //   firstName: "Nick",
-  //   lastName : "Unknown"
-  // });
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,
@@ -43,11 +36,18 @@ app.put('/api', function(req, res) {
   Task.update({
     title : req.body.task.title,
     description : req.body.task.description,
-    priority : req.body.task.priority
+    priority : req.body.task.priority,
+    status : req.body.task.status
   }, {
     where : {
       id : req.body.task.id
     }
+  })
+  .then(function(task) {
+    Task.findAll()
+      .then(function(data){
+        res.send(data);
+      });
   });
 });
 
@@ -56,6 +56,10 @@ app.delete('/api/:id', function(req, res) {
     where : {
       id : req.params.id
     }});
+});
+
+app.post('/register', function(req,res){
+
 });
 
 var server = app.listen(4000, function() {
