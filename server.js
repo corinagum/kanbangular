@@ -16,6 +16,13 @@ app.get('/api', function(req, res) {
 });
 
 app.post('/api', function(req, res) {
+  // User.create({
+  //   username: "Nick",
+  //   password: "crap",
+  //   email:"poopypirate@gmail.com",
+  //   firstName: "Nick",
+  //   lastName : "Unknown"
+  // });
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,
@@ -25,8 +32,10 @@ app.post('/api', function(req, res) {
     UserId : 1
   })
   .then(function(task) {
-    console.log(task);
-    res.send(task);
+    Task.findAll()
+      .then(function(data){
+        res.send(data);
+      });
   });
 });
 

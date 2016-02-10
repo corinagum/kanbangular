@@ -1,24 +1,21 @@
 angular.module('app')
   .controller('TaskController', ['$scope', 'TaskService', function ($scope, TaskService) {
-        var passingResponse;
+
       TaskService.getTasks()
         .then(function successCallback(response) {
           // console.log(deferred.promise.inspect().state);
-          return $scope.tasks = response.data;
+          $scope.tasks = response.data;
         });
       $scope.nextStatus = TaskService.nextStatus;
 
 
       $scope.addTask = function (newTask) {
           TaskService.addTask(newTask)
-          .then(function () {
-            return TaskService.getTasks();
-          }, function(err) {
-            console.log(err);
-          })
           .then(function(response) {
             console.log(response);
               $scope.tasks = response.data;
+          }, function(err) {
+            console.log(err);
           });
       };
 
