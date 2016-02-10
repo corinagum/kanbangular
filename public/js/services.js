@@ -35,4 +35,19 @@ angular.module('app')
     this.deleteTask = function(task) {
       return $http.delete('/api/' + task.id);
     };
-}]);
+  }])
+  .service("UserService", ['$http', function($http){
+
+    this.login = function(auth) {
+      return $http.post('/login', {
+        auth : auth
+      });
+    };
+
+    this.signUp = function(register) {
+      return $http.post('/register', {
+        register : register
+      });
+    };
+
+  }]);

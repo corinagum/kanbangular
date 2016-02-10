@@ -1,0 +1,17 @@
+<div>
+    <form>
+      <fieldset>
+       <div class="auth_username">
+         <label for="auth_username">Username</label>
+         <input id="auth_username" type="text" ng-model="auth.username" autofocus>
+       </div>
+       <div class="auth_password">
+         <label for="auth_password">Password </label>
+         <input id="auth_password" type="password" ng-model="auth.password">
+       </div>
+       <div class="commit">
+         <button type="button" ng-click="login(auth); auth=null">Sign In</button>
+       </div>
+      </fieldset>
+    </form>
+  </div>
