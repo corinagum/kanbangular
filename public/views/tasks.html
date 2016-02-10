@@ -1,4 +1,4 @@
-<div ng-controller="NewTaskController">
+<div ng-controller="TaskController">
     <form>
       <fieldset>
        <div class="new_task_title">
@@ -14,7 +14,7 @@
          <input id="new_task_priority" type="text" ng-model="new_task.priority">
        </div>
        <div class="commit">
-         <button type="button" ng-click="addTask(new_task); new_task=null" >Add Task</button>
+         <button type="button" ng-click="addTask(new_task); new_task=null">Add Task</button>
        </div>
       </fieldset>
     </form>
@@ -23,7 +23,7 @@
     <div id="to-do">
       <h2>To Do</h2>
       <ul class="tasks">
-        <li ng-repeat="task in $root.tasks | filter:task.status='To Do'">
+        <li ng-repeat="task in tasks | filter:task.status='To Do'">
           <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
           <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
           <p class="task_creator" editable-text="task.createdBy" onbeforesave="editTask(task)">{{task.createdBy}}</p>
@@ -31,7 +31,6 @@
           <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
           <div class="commit">
             <button type="button" ng-click="nextStatus(task);" >Start</button>
-
             <button type="button" ng-click="deleteTask(task);" >Delete</button>
           </div>
          </li>
@@ -40,7 +39,7 @@
     <div id="in-progress">
       <h2>In Progress</h2>
       <ul class="tasks">
-      <li ng-repeat="task in $root.tasks | filter:task.status='In Progress'">
+      <li ng-repeat="task in tasks | filter:task.status='In Progress'">
        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_creator" editable-text="task.createdBy" onbeforesave="editTask(task)">{{task.createdBy}}</p>
@@ -56,7 +55,7 @@
     <div id="done">
       <h2>Done</h2>
       <ul class="tasks">
-      <li ng-repeat="task in $root.tasks | filter:task.status='Done'">
+      <li ng-repeat="task in tasks | filter:task.status='Done'">
        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_creator" editable-text="task.createdBy" onbeforesave="editTask(task)">{{task.createdBy}}</p>

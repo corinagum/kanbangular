@@ -9,9 +9,8 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/api', function(req, res) {
-  Task.find()
+  Task.findAll()
     .then(function(tasks) {
-      console.log(tasks);
       res.send(tasks);
     });
 });
@@ -24,25 +23,30 @@ app.post('/api', function(req, res) {
     description : req.body.task.description,
     assignedTo : "a person",
     UserId : 1
+  })
+  .then(function(task) {
+    console.log(task);
+    res.send(task);
   });
 });
 
 app.put('/api', function(req, res) {
-  for (var i = 0; i < tasks.length; i++) {
-    if(tasks[i].id === req.body.task.id) {
-      tasks[i].title = req.body.task.title;
-      tasks[i].description = req.body.task.description;
-      tasks[i].priority = req.body.task.priority;
+  Task.update({
+    title : req.body.task.title,
+    description : req.body.task.description,
+    priority : req.body.task.priority
+  }, {
+    where : {
+      id : req.body.task.id
     }
-  }
+  });
 });
 
 app.delete('/api/:id', function(req, res) {
-  for (var i = 0; i < tasks.length; i++) {
-    if(tasks[i].id === req.params.id) {
-      tasks.splice(i, 1);
-    }
-  }
+  Task.destroy( {
+    where : {
+      id : req.params.id
+    }});
 });
 
 var server = app.listen(4000, function() {

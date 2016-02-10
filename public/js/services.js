@@ -27,7 +27,6 @@ angular.module('app')
     });
   };
 
-
 // DELETE
     this.deleteTask = function(task) {
       return $http.delete('/api/' + task.id);
