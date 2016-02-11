@@ -18,7 +18,11 @@ angular.module('app')
     $scope.addTask = function (newTask) {
         TaskService.addTask(newTask)
         .then(function(response) {
+          if(response.data.success === false){
+            console.log("not auth to add", response);
+          } else {
             $scope.tasks = response.data;
+          }
         }, function(err) {
           console.log(err);
         });
@@ -41,6 +45,7 @@ angular.module('app')
       }
     }
     };
+
 
     }]);
 

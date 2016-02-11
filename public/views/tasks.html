@@ -23,7 +23,7 @@
     <div id="to-do">
       <h2>To Do</h2>
       <ul class="tasks">
-        <li ng-repeat="task in tasks | filter:task.status='To Do' | orderBy:'id'">
+        <li ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'id'">
           <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
           <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
           <p class="task_creator" editable-text="task.createdBy" onbeforesave="editTask(task)">{{task.createdBy}}</p>
@@ -39,7 +39,7 @@
     <div id="in-progress">
       <h2>In Progress</h2>
       <ul class="tasks">
-      <li ng-repeat="task in tasks | filter:task.status='In Progress' | orderBy:'id'">
+      <li ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'id'">
        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_creator" editable-text="task.createdBy" onbeforesave="editTask(task)">{{task.createdBy}}</p>
@@ -55,7 +55,7 @@
     <div id="done">
       <h2>Done</h2>
       <ul class="tasks">
-      <li ng-repeat="task in tasks | filter:task.status='Done' | orderBy:'id'">
+      <li ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'id'">
        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_creator" editable-text="task.createdBy" onbeforesave="editTask(task)">{{task.createdBy}}</p>

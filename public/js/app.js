@@ -18,7 +18,7 @@ app
         controller : "UserController"
       })
       .when('/logout', {
-        controller : "UserController"
+        controller : "NavController"
       })
       .otherwise({
         templateUrl : 'views/404.html'

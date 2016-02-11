@@ -50,5 +50,10 @@ angular.module('app')
         register : register
       });
     };
+// LOGOUT
+    this.logout = function(){
+      console.log("in service");
+      return $http.get('/logout');
+    };
 
   }]);

@@ -8,12 +8,12 @@
 </head>
 <body ng-app="app">
   <h1>{{ "Kanbangular" }}</h1>
-  <div id="nav">
+  <div id="nav" ng-controller='NavController'>
     <ul>
       <li><a ng-href='/'>Home</a></li>
       <li><a ng-href='/login'>Log In</a></li>
       <li><a  ng-href='/register'>Register</a></li>
-      <li><a  ng-href='/logout'>Log Out</a></li>
+      <li><a  ng-href='/logout' ng-click='logout()'>Log Out</a></li>
     </ul>
   </div>
   <div ng-view>
@@ -26,6 +26,7 @@
   <script type="text/javascript" src="./js/app.js"></script>
   <script type="text/javascript" src="./js/controllers/task-controllers.js"></script>
   <script type="text/javascript" src="./js/controllers/user-controllers.js"></script>
+  <script type="text/javascript" src="./js/controllers/nav-controllers.js"></script>
   <script type="text/javascript" src="./js/services.js"></script>
 
 </body>
