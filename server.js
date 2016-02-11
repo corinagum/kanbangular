@@ -12,21 +12,22 @@ app.use(express.static('public'));
 
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 6000 }
+  cookie: { maxAge: 60000 }
 }));
 
 // MIDDLEWARE
 
 function validateUser(req, res, next) {
-  if(!req.session.user) {
+  console.log("middleware req.session: ", req.session);
+  if(req.session.hasOwnProperty('user')) {
+    console.log('validation succeeded');
+    return next();
+  } else {
+    console.log('validation failed');
     return res.send({
       success : false,
       message : "Please sign in or register"
     });
-  } else {
-    return next();
   }
 }
 
@@ -74,9 +75,12 @@ app.post('/login', function(req, res) {
       });
       }
       if(user.password === req.body.auth.password) {
+        console.log("login accepted");
         req.session.user = {
-                username : req.body.register.username
+                username : req.body.auth.username
               };
+        console.log("req.session: ", req.session);
+        res.send({succes: true});
       } else {
         res.send({
           success : false,
