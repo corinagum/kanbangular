@@ -6,7 +6,6 @@ angular.module('app')
           if(response.data.success === true){
             $location.path('/login');
           }
-          console.log("in controller");
         });
     };
   }]);

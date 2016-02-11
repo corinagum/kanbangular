@@ -18,12 +18,9 @@ app.use(session({
 // MIDDLEWARE
 
 function validateUser(req, res, next) {
-  console.log("middleware req.session: ", req.session);
   if(req.session.hasOwnProperty('user')) {
-    console.log('validation succeeded');
     return next();
   } else {
-    console.log('validation failed');
     return res.send({
       success : false,
       message : "Please sign in or register"
@@ -75,11 +72,9 @@ app.post('/login', function(req, res) {
       });
       }
       if(user.password === req.body.auth.password) {
-        console.log("login accepted");
         req.session.user = {
                 username : req.body.auth.username
               };
-        console.log("req.session: ", req.session);
         res.send({succes: true});
       } else {
         res.send({
@@ -148,6 +143,5 @@ app.get('*', function(req, res){
 });
 
 var server = app.listen(4000, function() {
-  console.log('Server online at ', server.address());
   db.sequelize.sync();
 });

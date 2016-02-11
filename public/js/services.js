@@ -52,7 +52,6 @@ angular.module('app')
     };
 // LOGOUT
     this.logout = function(){
-      console.log("in service");
       return $http.get('/logout');
     };
 
