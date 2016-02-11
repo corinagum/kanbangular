@@ -12,9 +12,10 @@ app.use(express.static('public'));
 
 app.use(session({
   secret: 'keyboard cat',
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 60000000 }
 }));
 
+// ****************************************
 // MIDDLEWARE
 
 function validateUser(req, res, next) {
@@ -75,7 +76,11 @@ app.post('/login', function(req, res) {
         req.session.user = {
                 username : req.body.auth.username
               };
-        res.send({succes: true});
+        res.send({
+          success: true,
+          firstName : user.firstName,
+          username : user.username
+        });
       } else {
         res.send({
           success : false,

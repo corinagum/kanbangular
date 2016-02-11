@@ -10,12 +10,10 @@ app
         controller : "TaskController"
       })
       .when('/login', {
-        templateUrl : 'views/login.html',
-        controller : "UserController"
+        templateUrl : 'views/login.html'
       })
       .when('/register', {
-        templateUrl : 'views/register.html',
-        controller : "UserController"
+        templateUrl : 'views/register.html'
       })
       .when('/logout', {
         controller : "NavController"

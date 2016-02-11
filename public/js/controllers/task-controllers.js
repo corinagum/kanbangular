@@ -14,6 +14,14 @@ angular.module('app')
         });
     };
 
+    $scope.prevStatus = function(task){
+      TaskService.prevStatus(task)
+        .then(function(response) {
+            $scope.tasks = response.data;
+        }, function(err) {
+        });
+    };
+
     $scope.addTask = function (newTask) {
         TaskService.addTask(newTask)
         .then(function(response) {

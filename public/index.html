@@ -6,14 +6,15 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.1.9/css/xeditable.css">
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller='UserController'>
   <h1>{{ "Kanbangular" }}</h1>
-  <div id="nav" ng-controller='NavController'>
+  <div id="nav">
     <ul>
       <li><a ng-href='/'>Home</a></li>
       <li><a ng-href='/login'>Log In</a></li>
-      <li><a  ng-href='/register'>Register</a></li>
-      <li><a  ng-href='/logout' ng-click='logout()'>Log Out</a></li>
+      <li><a ng-href='/register'>Register</a></li>
+      <li><a ng-href='/logout' ng-click='logout()'>Log Out</a></li>
+      <li>You are logged in as {{username}}</li>
     </ul>
   </div>
   <div ng-view>
