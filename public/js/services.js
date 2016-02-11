@@ -38,12 +38,13 @@ angular.module('app')
   }])
   .service("UserService", ['$http', function($http){
 
+// LOGIN
     this.login = function(auth) {
       return $http.post('/login', {
         auth : auth
       });
     };
-
+// REGISTER
     this.signUp = function(register) {
       return $http.post('/register', {
         register : register

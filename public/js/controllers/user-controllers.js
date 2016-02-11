@@ -4,6 +4,8 @@ angular.module('app')
       UserService.login(auth);
     };
     $scope.signUp = function(register) {
-      UserService.signUp(register);
+      UserService.signUp(register)
+        .success(function(response) {
+        });
     };
   }]);

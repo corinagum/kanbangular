@@ -1,51 +1,46 @@
 angular.module('app')
   .controller('TaskController', ['$scope', 'TaskService', function ($scope, TaskService) {
 
-      TaskService.getTasks()
-        .then(function successCallback(response) {
-          $scope.tasks = response.data;
+    TaskService.getTasks()
+      .then(function successCallback(response) {
+        $scope.tasks = response.data;
+      });
+
+    $scope.nextStatus = function(task){
+      TaskService.nextStatus(task)
+        .then(function(response) {
+            $scope.tasks = response.data;
+        }, function(err) {
+          console.log(err);
         });
+    };
 
-      $scope.nextStatus = function(task){
-        TaskService.nextStatus(task)
-          .then(function(response) {
-            console.log(response);
-              $scope.tasks = response.data;
-          }, function(err) {
-            console.log(err);
-          });
-      };
-
-
-      $scope.addTask = function (newTask) {
-          TaskService.addTask(newTask)
-          .then(function(response) {
-            console.log(response);
-              $scope.tasks = response.data;
-          }, function(err) {
-            console.log(err);
-          });
-      };
-
-
-      $scope.editTask = function(task) {
-        TaskService.editTask(task)
-          .then(function(response) {
-            console.log(response);
-              $scope.tasks = response.data;
-          }, function(err) {
-            console.log(err);
+    $scope.addTask = function (newTask) {
+        TaskService.addTask(newTask)
+        .then(function(response) {
+            $scope.tasks = response.data;
+        }, function(err) {
+          console.log(err);
         });
-      };
+    };
 
-      $scope.deleteTask = function (task) {
-        TaskService.deleteTask(task);
-      for (var i = 0; i < $scope.tasks.length; i++) {
-        if($scope.tasks[i].id === task.id) {
-          $scope.tasks.splice(i, 1);
-        }
+    $scope.editTask = function(task) {
+      TaskService.editTask(task)
+        .then(function(response) {
+            $scope.tasks = response.data;
+        }, function(err) {
+          console.log(err);
+      });
+    };
+
+    $scope.deleteTask = function (task) {
+      TaskService.deleteTask(task);
+    for (var i = 0; i < $scope.tasks.length; i++) {
+      if($scope.tasks[i].id === task.id) {
+        $scope.tasks.splice(i, 1);
       }
-      };
+    }
+    };
 
     }]);
 

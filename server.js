@@ -1,66 +1,35 @@
 var express       = require('express');
+var session       = require('express-session');
 var app           = express();
 var bodyParser    = require('body-parser');
 var db            = require('./models');
 var User          = db.User;
 var Task          = db.Task;
-var passport      = require('passport');
-var session       = require('express-session');
-var LocalStrategy = require('passport-local').Strategy;
-var bcrypt        = require('bcrypt');
-var flash         = require('connect-flash');
+
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 6000 }
+}));
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
+// MIDDLEWARE
 
-passport.use(new LocalStrategy({
-  passReqToCallback: true
-  },
-  function(req, username, password, done){
-    var user;
-    Users.findOne({where : {
-      username : username
-    }})
-    .then(function(data){
-      user = data;
-      if(!user){
-        // req.flash("messages", "User does not exist");
-        return done(null, false);
-      }
-      bcrypt.compare(password, user.password, function(err, res){
-        if(user.username === username && res === false){
-          // req.flash("messages", "Password incorrect");
-          return done(null, false);
-        }
-        if(user.username === username && res === true){
-          userId = user.id;
-          loggedInChecker=true;
-          return done(null, user);
-        }
-      });
+function validateUser(req, res, next) {
+  if(!req.session.user) {
+    return res.send({
+      success : false,
+      message : "Please sign in or register"
     });
+  } else {
+    return next();
   }
-));
+}
 
-
-// User Authentication
-// app.get('/login', function(req,res){
-//   res.sendFile('public/views/index.html');
-// });
-
-app.get('/register', function(req,res){
-  // res.render('photos/register', {messages : req.flash('messages')});
-});
 
 app.post('/register', function(req,res){
   User.findOne({
@@ -70,40 +39,54 @@ app.post('/register', function(req,res){
   })
   .then(function(data){
     if(!data){
-      bcrypt.genSalt(10, function(err,salt){
-        bcrypt.hash(req.body.register.password, salt, function(err,hash){
           User.create({
             username : req.body.register.username,
-            password : hash
-          })
-          .then(function (data) {
-            req.login(data, function(err) {
-              if (err) { return next(err); }
-              return res.redirect('/');
-            });
+            password : req.body.register.password
           });
-        });
-      });
+      req.session.user = {
+        username : req.body.register.username
+      };
     } else {
-      // req.flash('messages', 'Username taken');
-      res.redirect('/register');
+      res.send({success : false});
+
     }
   });
 });
 
 app.get('/logout', function(req,res){
-  // loggedInChecker=false;
-  // req.logout();
-  // res.redirect('/login');
+  delete req.session.user;
+  res.send({
+    success : true,
+    message : "You have been logged out"
+  });
 });
 
-app.post('/login', passport.authenticate('local', {
-  successRedirect : '/',
-  failureRedirect : '/login',
-  // failureFlash : true,
-  // succesFlash : true
-}));
+app.post('/login', function(req, res) {
+  User.findOne({
+    where: {
+      username : req.body.auth.username
+    }})
+    .then(function(user) {
+      if(!user) {
+      return res.send({
+        success : false,
+        message : 'login not found'
+      });
+      }
+      if(user.password === req.body.auth.password) {
+        req.session.user = {
+                username : req.body.register.username
+              };
+      } else {
+        res.send({
+          success : false,
+          message : 'incorrect login credentials'
+        });
+      }
+    });
+});
 
+// ****************************************
 // CRUD Operations
 app.get('/api', function(req, res) {
   Task.findAll()
@@ -112,7 +95,7 @@ app.get('/api', function(req, res) {
     });
 });
 
-app.post('/api', function(req, res) {
+app.post('/api', validateUser, function(req, res) {
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,
