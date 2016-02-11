@@ -14,7 +14,7 @@ angular.module('app')
         });
     };
 
-    $scope.prevStatus = function(task){
+    $scope.preveStatus = function(task){
       TaskService.prevStatus(task)
         .then(function(response) {
             $scope.tasks = response.data;
