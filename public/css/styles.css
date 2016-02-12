@@ -1,2 +1,69 @@
 body {
-  background: #333333; }
+  margin: 0;
+  background-color: #fafafa; }
+
+h1 {
+  background-color: #F38630;
+  color: #E0E4CC;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.75em;
+  font-weight: 700; }
+
+h2 {
+  text-align: center;
+  color: #555; }
+
+input {
+  margin: 5px 0; }
+
+.task_title {
+  border-bottom: 2px solid red;
+  text-transform: capitalize; }
+
+.task_creator {
+  text-align: right;
+  font-style: italic; }
+
+#nav {
+  background-color: #A7DBD8; }
+  #nav ul {
+    list-style: none;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around; }
+    #nav ul li {
+      text-align: center;
+      flex: 0 0 20; }
+
+#kanban {
+  margin: 5px; }
+  #kanban ul li {
+    list-style: none; }
+
+.tasks {
+  padding-left: 0; }
+
+.task-card {
+  background-color: #fafafa;
+  margin: 10px;
+  border: 3px solid #FA6900;
+  padding: 20px;
+  padding-left: 30px;
+  -webkit-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
+  .task-card p {
+    height: 2em; }
+
+div.task-card:hover {
+  -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75); }
+
+li.task-card:hover {
+  -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75); }

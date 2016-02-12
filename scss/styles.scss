@@ -1,4 +1,100 @@
-$dark-color : #333333;
+$white : #fafafa;
+$neutral-color : #E0E4CC;
+$bright-blue-color : #69D2E7;
+$neutral-blue-color : #A7DBD8;
+$goldfish-color : #F38630;
+$bright-orange-color : #FA6900;
+
+
 body {
-  background: $dark-color;
+margin : 0;
+background-color : $white;
+
+}
+
+h1 {
+background-color: $goldfish-color;
+color: $neutral-color;
+text-transform: uppercase;
+text-align: center;
+line-height: 0.75em;
+font-weight: 700;
+
+}
+
+h2 {
+  text-align: center;
+  color : #555;
+}
+
+input {
+  margin : 5px 0;
+}
+
+.task_title{
+  border-bottom: 2px solid red;
+  text-transform: capitalize;
+}
+.task_creator {
+  text-align : right;
+  font-style: italic;
+}
+
+#nav {
+background-color: $neutral-blue-color;
+
+
+  ul {
+    list-style : none;
+    display : -webkit-flex;
+       -webkit-flex-direction : column;
+    display : flex;
+    flex-flow : row wrap;
+    justify-content : space-around;
+
+    li {
+      text-align : center;
+      flex : 0 0 20;
+    }
+  }
+}
+
+#kanban {
+  margin : 5px;
+  ul {
+    li {
+      list-style : none;
+    }
+  }
+}
+
+.tasks {
+  padding-left: 0;
+}
+.task-card {
+  background-color: $white;
+  margin : 10px;
+  border: 3px solid $bright-orange-color;
+  padding : 20px;
+  padding-left : 30px;
+
+  p {
+    height : 2em;
+  }
+
+  -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+
+}
+div.task-card:hover {
+  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+}
+
+li.task-card:hover {
+  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
 }
