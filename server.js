@@ -146,7 +146,7 @@ app.post('/api', validateUser, function(req, res) {
   });
 });
 
-app.put('/api', function(req, res) {
+app.put('/api', validateUser, function(req, res) {
   Task.update({
     title : req.body.task.title,
     description : req.body.task.description,
@@ -165,7 +165,7 @@ app.put('/api', function(req, res) {
   });
 });
 
-app.delete('/api/:id', function(req, res) {
+app.delete('/api/:id', validateUser, function(req, res) {
   Task.destroy( {
     where : {
       id : req.params.id
