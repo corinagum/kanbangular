@@ -124,6 +124,18 @@ app.post('/login', function(req, res) {
   });
 });
 
+app.get('/authStatus', function(req, res){
+  if(req.session.hasOwnProperty('user')){
+    res.send({
+      success : true,
+      firstName : req.session.user.firstName,
+      username : req.session.user.username
+    });
+  } else {
+    res.send({success : false});
+  }
+});
+
 // ****************************************
 // CRUD Operations
 app.get('/api', function(req, res) {
@@ -134,7 +146,6 @@ app.get('/api', function(req, res) {
 });
 
 app.post('/api', validateUser, function(req, res) {
-  console.log(req.session.user);
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,
