@@ -60,7 +60,6 @@ h1 {
   font-size: 3em; }
 
 h2 {
-  margin-top: 20px;
   text-align: center;
   color: #555;
   font-size: 20px; }
@@ -74,7 +73,7 @@ input {
   #nav ul {
     list-style: none;
     display: -webkit-flex;
-    -webkit-flex-direction: column;
+    -webkit-flex-direction: row;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around; }
@@ -90,13 +89,13 @@ input {
   @media only screen and (min-width: 800px) {
     #kanban {
       display: -webkit-flex;
-      -webkit-flex-direction: column;
+      -webkit-flex-direction: row;
       display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around; } }
-  @media only screen and (min-width: 800px) {
-    #kanban .stages {
-      flex: 1 auto; } }
+      flex-flow: row nowrap;
+      justify-content: space-around; }
+      #kanban .stages {
+        flex: 1 auto;
+        display: flex; } }
   #kanban .commit {
     margin-top: 20px; }
     #kanban .commit button {
@@ -108,17 +107,14 @@ input {
 
 .task-card {
   background-color: #fafafa;
-  margin: 0 auto;
   margin-top: 20px;
   border: 3px solid #FA6900;
-  padding: 20px;
-  padding-left: 30px;
   -webkit-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
   @media only screen and (min-width: 800px) {
     .task-card {
-      max-width: 33vw; } }
+      width: 30vw; } }
   .task-card p {
     height: 2em;
     line-height: 2em; }
