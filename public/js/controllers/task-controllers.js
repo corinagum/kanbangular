@@ -70,7 +70,7 @@ angular.module('app')
       TaskService.deleteTask(task)
         .then(function(response) {
           if(response.data.success){
-            $scope.tasks = response.data;
+            $scope.tasks = response.data.tasks;
           } else {
             $scope.addTaskMessage = response.data.message;
           }

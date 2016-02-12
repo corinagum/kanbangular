@@ -181,8 +181,11 @@ app.delete('/api/:id', validateUser, function(req, res) {
   }})
   .then(function(data){
     Task.findAll()
-      .then(function(data){
-        res.send(data);
+      .then(function(tasks){
+        res.send({
+          success : true,
+          tasks : tasks
+        });
       });
   });
 });
