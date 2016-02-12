@@ -55,26 +55,22 @@ h1 {
   color: #E0E4CC;
   text-transform: uppercase;
   text-align: center;
-  line-height: 0.75em;
-  font-weight: 700; }
+  line-height: 1em;
+  font-weight: 700;
+  font-size: 3em; }
 
 h2 {
+  margin-top: 20px;
   text-align: center;
-  color: #555; }
+  color: #555;
+  font-size: 20px; }
 
 input {
   margin: 5px 0; }
 
-.task_title {
-  border-bottom: 2px solid red;
-  text-transform: capitalize; }
-
-.task_creator {
-  text-align: right;
-  font-style: italic; }
-
 #nav {
-  background-color: #A7DBD8; }
+  background-color: #A7DBD8;
+  height: 3em; }
   #nav ul {
     list-style: none;
     display: -webkit-flex;
@@ -84,7 +80,8 @@ input {
     justify-content: space-around; }
     #nav ul li {
       text-align: center;
-      flex: 1 0 20; }
+      flex: 1 0 20;
+      line-height: 3em; }
 
 #kanban {
   margin: 5px; }
@@ -100,13 +97,19 @@ input {
   @media only screen and (min-width: 800px) {
     #kanban .stages {
       flex: 1 auto; } }
+  #kanban .commit {
+    margin-top: 20px; }
+    #kanban .commit button {
+      height: 1.5em;
+      line-height: 1.5em; }
 
 .tasks {
   padding-left: 0; }
 
 .task-card {
   background-color: #fafafa;
-  margin: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
   border: 3px solid #FA6900;
   padding: 20px;
   padding-left: 30px;
@@ -115,10 +118,16 @@ input {
   box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
   @media only screen and (min-width: 800px) {
     .task-card {
-      max-width: 50vw; } }
+      max-width: 33vw; } }
   .task-card p {
     height: 2em;
     line-height: 2em; }
+  .task-card .task_title {
+    border-bottom: 2px solid red;
+    text-transform: capitalize; }
+  .task-card .task_creator {
+    text-align: right;
+    font-style: italic; }
 
 div.task-card:hover {
   -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
@@ -129,3 +138,20 @@ li.task-card:hover {
   -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
   box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75); }
+
+.auth {
+  background-color: #fafafa;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px solid #69D2E7;
+  padding: 20px;
+  padding-left: 30px;
+  -webkit-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
+  @media only screen and (min-width: 800px) {
+    .auth {
+      max-width: 33vw; } }
+  .auth p {
+    height: 2em;
+    line-height: 2em; }

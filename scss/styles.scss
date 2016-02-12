@@ -1,132 +1,179 @@
-// PROCESS
-// 0. CSS reset
-// 1. Set basic variables & media query ranges
-// 2. Style large blocks with bg colors for layout
-// 3. Get general layout elements (block) sized for all media queries
-// 4. Modify general layout elements with &
-// 5. Secondary features grid (S --> L)
-// 6. Typography & Image Sizes
-// 7. Refactor the SCSS to make it dryer & simpler.
-// 8. Set variables for common values.
+  // PROCESS
+  // 0. CSS reset
+  // 1. Set basic variables & media query ranges
+  // 2. Style large blocks with bg colors for layout
+  // 3. Get general layout elements (block) sized for all media queries
+  // 4. Modify general layout elements with &
+  // 5. Secondary features grid (S --> L)
+  // 6. Typography & Image Sizes
+  // 7. Refactor the SCSS to make it dryer & simpler.
+  // 8. Set variables for common values.
 
-// 0. RESETS & FRAMEWORKS
-@import "partials/reset";
+  // 0. RESETS & FRAMEWORKS
+  @import "partials/reset";
 
-// * {
-//   box-sizing: border-box;
-//   // transition: all 1s ease;
-// }
+  // * {
+  //   box-sizing: border-box;
+  //   // transition: all 1s ease;
+  // }
 
-// VARIABLES & MIXINS
+  // VARIABLES & MIXINS
 
-// Mixins
+  // Mixins
 
-// MEDIA QUERY RANGES
-$large: "only screen and (min-width:800px)";
+  // MEDIA QUERY RANGES
+  $large: "only screen and (min-width:800px)";
 
-// @media #{$large} {
-//   // padding: 0;
-//   // width: 75%;
-//   border-top: 1px solid #eee;
-// }
+  // @media #{$large} {
+  //   // padding: 0;
+  //   // width: 75%;
+  //   border-top: 1px solid #eee;
+  // }
 
-// GENERAL STYLES
+  // GENERAL STYLES
 
-$white : #fafafa;
-$neutral-color : #E0E4CC;
-$bright-blue-color : #69D2E7;
-$neutral-blue-color : #A7DBD8;
-$goldfish-color : #F38630;
-$bright-orange-color : #FA6900;
+  $white : #fafafa;
+  $neutral-color : #E0E4CC;
+  $bright-blue-color : #69D2E7;
+  $neutral-blue-color : #A7DBD8;
+  $goldfish-color : #F38630;
+  $bright-orange-color : #FA6900;
 
 
-body {
-margin : 0;
-background-color : $white;
-font-family: sans-serif;
-}
+  body {
+  margin : 0;
+  background-color : $white;
+  font-family: sans-serif;
+  }
 
-h1 {
-background-color: $goldfish-color;
-color: $neutral-color;
-text-transform: uppercase;
-text-align: center;
-line-height: 0.75em;
-font-weight: 700;
-
-}
-
-h2 {
+  h1 {
+  background-color: $goldfish-color;
+  color: $neutral-color;
+  text-transform: uppercase;
   text-align: center;
-  color : #555;
-}
+  line-height: 1em;
+  font-weight: 700;
+  font-size: 3em;
 
-input {
-  margin : 5px 0;
-}
-
-.task_title{
-  border-bottom: 2px solid red;
-  text-transform: capitalize;
-}
-.task_creator {
-  text-align : right;
-  font-style: italic;
-}
-
-#nav {
-background-color: $neutral-blue-color;
-
-
-  ul {
-    list-style : none;
-    display : -webkit-flex;
-       -webkit-flex-direction : column;
-    display : flex;
-    flex-flow : row wrap;
-    justify-content : space-around;
-
-    li {
-      text-align : center;
-      flex : 1 0 20;
-    }
   }
-}
 
-#kanban {
-  margin : 5px;
-  ul {
-    li {
+  h2 {
+    margin-top : 20px;
+    text-align: center;
+    color : #555;
+    font-size: 20px;
+  }
+
+  input {
+    margin : 5px 0;
+  }
+
+
+  #nav {
+  background-color: $neutral-blue-color;
+  height : 3em;
+
+
+    ul {
       list-style : none;
+      display : -webkit-flex;
+         -webkit-flex-direction : column;
+      display : flex;
+      flex-flow : row wrap;
+      justify-content : space-around;
+
+      li {
+        text-align : center;
+        flex : 1 0 20;
+        line-height: 3em;
+      }
     }
   }
 
-  @media #{$large} {
-    display : -webkit-flex;
-       -webkit-flex-direction : column;
-    display : flex;
-    flex-flow : row wrap;
-    justify-content : space-around;
-  }
-  .stages {
+  #kanban {
+    margin : 5px;
+    ul {
+      li {
+        list-style : none;
+      }
+    }
+
     @media #{$large} {
-      flex : 1 auto;
+      display : -webkit-flex;
+         -webkit-flex-direction : column;
+      display : flex;
+      flex-flow : row wrap;
+      justify-content : space-around;
+    }
+    .stages {
+      @media #{$large} {
+        flex : 1 auto;
+      }
+    }
+
+    .commit {
+      margin-top : 20px;
+
+      button {
+        height : 1.5em;
+        line-height : 1.5em;
+      }
     }
   }
-}
 
 
-.tasks {
-  padding-left: 0;
-}
-.task-card {
+  .tasks {
+    padding-left: 0;
+  }
+  .task-card {
+    background-color: $white;
+    margin : 0 auto;
+    margin-top : 20px;
+    border: 3px solid $bright-orange-color;
+    padding : 20px;
+    padding-left : 30px;
+    @media #{$large} {
+      max-width : 33vw;
+    }
+    p {
+      height : 2em;
+      line-height : 2em;
+    }
+
+    -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+    box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+
+    .task_title{
+      border-bottom: 2px solid red;
+      text-transform: capitalize;
+    }
+    .task_creator {
+      text-align : right;
+      font-style: italic;
+    }
+  }
+  div.task-card:hover {
+    -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  }
+
+  li.task-card:hover {
+    -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  }
+
+.auth {
   background-color: $white;
-  margin : 10px;
-  border: 3px solid $bright-orange-color;
+  margin : 0 auto;
+  margin-top : 20px;
+  border: 3px solid $bright-blue-color;
   padding : 20px;
   padding-left : 30px;
   @media #{$large} {
-    max-width : 50vw;
+    max-width : 33vw;
   }
   p {
     height : 2em;
@@ -137,15 +184,4 @@ background-color: $neutral-blue-color;
   -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
   box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
 
-}
-div.task-card:hover {
-  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-}
-
-li.task-card:hover {
-  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
 }
