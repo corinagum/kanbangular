@@ -42,7 +42,7 @@ app.post('/register', function(req,res){
   .then(function(data){
     if(!data){
       bcrypt.genSalt(10, function(err,salt){
-        bcrypt.hash(req.body.password, salt, function(err,hash){
+        bcrypt.hash(req.body.register.password, salt, function(err,hash){
           User.create({
             username : req.body.register.username,
             password : hash
@@ -50,7 +50,8 @@ app.post('/register', function(req,res){
         });
       });
       req.session.user = {
-            username : req.body.register.username
+            username : req.body.register.username,
+            firstName : req.body.firstName
           };
       res.send({
         success : true,
@@ -98,7 +99,8 @@ app.post('/login', function(req, res) {
       bcrypt.compare(req.body.auth.password, user.password, function(err, valid){
         if(valid === true){
           req.session.user = {
-            username : req.body.auth.username
+            username : req.body.auth.username,
+            firstName : user.firstName
           };
           res.send({
             success: true,
