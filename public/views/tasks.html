@@ -1,3 +1,4 @@
+  <h2>New Task</h2>
 <div class="task-card">
     <form>
       <fieldset>
@@ -35,8 +36,8 @@
         <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
         <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
         <div class="commit">
-          <button type="button" ng-click="nextStatus(task)">&#8594;</button>
-          <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-remove text-danger"></span></button>
+          <button type="button" ng-click="nextStatus(task)"><span class="glyphicon glyphicon-chevron-right"></span></button>
+          <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-trash"></span></button>
         </div>
        </li>
     </ul>
@@ -51,9 +52,9 @@
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
       <div class="commit">
-        <button type="button" ng-click="prevStatus(task);">&#8592;</button>
-        <button type="button" ng-click="nextStatus(task);">&#8594;</button>
-        <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-remove text-danger"></span></button>
+        <button type="button" ng-click="prevStatus(task);"><span class="glyphicon glyphicon-chevron-left"></span></button>
+        <button type="button" ng-click="nextStatus(task);"><span class="glyphicon glyphicon-chevron-right"></span></button>
+        <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
      </li>
     </ul>
@@ -68,10 +69,9 @@
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
       <div class="commit">
-        <button type="button" ng-click="prevStatus(task);">&#8592;</button>
-        <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-remove text-danger"></span></button>
+        <button type="button" ng-click="prevStatus(task);"><span class="glyphicon glyphicon-chevron-left"></button>
+        <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
      </li>
     </ul>
   </div>
-</div>

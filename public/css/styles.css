@@ -105,13 +105,16 @@ input {
         flex-shrink: 1;
         flex-basis: auto;
         min-width: 30vw; } }
-  #kanban .commit {
-    margin: auto;
-    margin-top: 20px;
+
+.commit {
+  margin: auto;
+  margin-top: 20px;
+  text-align: center; }
+  .commit button {
+    height: 1.5em;
+    line-height: 1.5em;
+    vertical-align: middle;
     text-align: center; }
-    #kanban .commit button {
-      height: 1.5em;
-      line-height: 1.5em; }
 
 .tasks {
   padding-left: 0;
@@ -134,6 +137,7 @@ input {
     height: 2em;
     line-height: 2em; }
   .task-card .task_title {
+    padding-bottom: 5px;
     border-bottom: 2px solid red;
     text-transform: capitalize; }
   .task-card .task_creator {

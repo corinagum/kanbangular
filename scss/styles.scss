@@ -19,6 +19,13 @@
 
   // VARIABLES & MIXINS
 
+  $white : #fafafa;
+  $neutral-color : #E0E4CC;
+  $bright-blue-color : #69D2E7;
+  $neutral-blue-color : #A7DBD8;
+  $goldfish-color : #F38630;
+  $bright-orange-color : #FA6900;
+
   // Mixins
 
   // MEDIA QUERY RANGES
@@ -31,13 +38,6 @@
   // }
 
 //   // GENERAL STYLES
-
-  $white : #fafafa;
-  $neutral-color : #E0E4CC;
-  $bright-blue-color : #69D2E7;
-  $neutral-blue-color : #A7DBD8;
-  $goldfish-color : #F38630;
-  $bright-orange-color : #FA6900;
 
 
   body {
@@ -116,6 +116,8 @@
       min-width : 30vw;
     }
   }
+}
+
 
   .commit {
     margin : auto;
@@ -125,10 +127,10 @@
     button {
       height : 1.5em;
       line-height : 1.5em;
+      vertical-align: middle;
+      text-align: center;
     }
   }
-}
-
 
 .tasks {
   padding-left: 0;
@@ -155,6 +157,7 @@
   box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
 
   .task_title{
+    padding-bottom : 5px;
     border-bottom: 2px solid red;
     text-transform: capitalize;
   }
@@ -162,6 +165,12 @@
     text-align : right;
     font-style: italic;
   }
+
+  // .task_priority {
+  //   float : left;
+  //   text-align : left;
+  //   font-style: italic;
+  // }
 }
 div.task-card:hover {
   -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
@@ -207,15 +216,3 @@ li.task-card:hover {
   line-height: 1em;
   vertical-align: middle;
 }
-// .btn-primary {
-//   color: #fff;
-//   background-color: #337ab7;
-//   border-color: #2e6da4;
-//   line-height: 1em;
-//   vertical-align: -webkit-baseline-middle;
-// }
-
-// .btn-default {
-//   line-height: 1em;
-//   vertical-align: text-top
-// }
