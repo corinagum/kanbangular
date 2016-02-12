@@ -1,62 +1,129 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 body {
   margin: 0;
-  background-color: #fafafa; }
+  background-color: #fafafa;
+  font-family: sans-serif; }
 
 h1 {
   background-color: #F38630;
   color: #E0E4CC;
   text-transform: uppercase;
   text-align: center;
-  line-height: 0.75em;
-  font-weight: 700; }
+  line-height: 1em;
+  font-weight: 700;
+  font-size: 3em; }
 
 h2 {
   text-align: center;
-  color: #555; }
+  color: #555;
+  font-size: 20px; }
 
 input {
   margin: 5px 0; }
 
-.task_title {
-  border-bottom: 2px solid red;
-  text-transform: capitalize; }
-
-.task_creator {
-  text-align: right;
-  font-style: italic; }
-
 #nav {
-  background-color: #A7DBD8; }
+  background-color: #A7DBD8;
+  height: 3em; }
   #nav ul {
     list-style: none;
     display: -webkit-flex;
-    -webkit-flex-direction: column;
+    -webkit-flex-direction: row;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around; }
     #nav ul li {
       text-align: center;
-      flex: 0 0 20; }
+      flex: 1 0 20;
+      line-height: 3em; }
 
 #kanban {
   margin: 5px; }
   #kanban ul li {
     list-style: none; }
+  @media only screen and (min-width: 800px) {
+    #kanban {
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around; }
+      #kanban .stages {
+        flex: 1 auto;
+        display: flex; } }
+  #kanban .commit {
+    margin-top: 20px; }
+    #kanban .commit button {
+      height: 1.5em;
+      line-height: 1.5em; }
 
 .tasks {
   padding-left: 0; }
 
 .task-card {
   background-color: #fafafa;
-  margin: 10px;
+  margin-top: 20px;
   border: 3px solid #FA6900;
-  padding: 20px;
-  padding-left: 30px;
   -webkit-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
+  @media only screen and (min-width: 800px) {
+    .task-card {
+      width: 30vw; } }
   .task-card p {
-    height: 2em; }
+    height: 2em;
+    line-height: 2em; }
+  .task-card .task_title {
+    border-bottom: 2px solid red;
+    text-transform: capitalize; }
+  .task-card .task_creator {
+    text-align: right;
+    font-style: italic; }
 
 div.task-card:hover {
   -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
@@ -67,3 +134,20 @@ li.task-card:hover {
   -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
   box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75); }
+
+.auth {
+  background-color: #fafafa;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px solid #69D2E7;
+  padding: 20px;
+  padding-left: 30px;
+  -webkit-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
+  @media only screen and (min-width: 800px) {
+    .auth {
+      max-width: 33vw; } }
+  .auth p {
+    height: 2em;
+    line-height: 2em; }

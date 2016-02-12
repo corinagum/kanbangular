@@ -25,7 +25,7 @@
     </form>
   </div>
   <div id="kanban">
-    <div id="to-do">
+    <div id="to-do" class="stages">
       <h2>To Do</h2>
       <ul class="tasks">
         <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'id'">
@@ -41,7 +41,7 @@
          </li>
       </ul>
     </div>
-    <div id="in-progress">
+    <div id="in-progress" class="stages">
       <h2>In Progress</h2>
       <ul class="tasks">
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'id'">
@@ -58,7 +58,7 @@
        </li>
       </ul>
     </div>
-    <div id="done">
+    <div id="done" class="stages">
       <h2>Done</h2>
       <ul class="tasks">
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'id'">
