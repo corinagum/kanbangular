@@ -1,3 +1,37 @@
+// PROCESS
+// 0. CSS reset
+// 1. Set basic variables & media query ranges
+// 2. Style large blocks with bg colors for layout
+// 3. Get general layout elements (block) sized for all media queries
+// 4. Modify general layout elements with &
+// 5. Secondary features grid (S --> L)
+// 6. Typography & Image Sizes
+// 7. Refactor the SCSS to make it dryer & simpler.
+// 8. Set variables for common values.
+
+// 0. RESETS & FRAMEWORKS
+@import "partials/reset";
+
+// * {
+//   box-sizing: border-box;
+//   // transition: all 1s ease;
+// }
+
+// VARIABLES & MIXINS
+
+// Mixins
+
+// MEDIA QUERY RANGES
+$large: "only screen and (min-width:800px)";
+
+// @media #{$large} {
+//   // padding: 0;
+//   // width: 75%;
+//   border-top: 1px solid #eee;
+// }
+
+// GENERAL STYLES
+
 $white : #fafafa;
 $neutral-color : #E0E4CC;
 $bright-blue-color : #69D2E7;
@@ -9,7 +43,7 @@ $bright-orange-color : #FA6900;
 body {
 margin : 0;
 background-color : $white;
-
+font-family: sans-serif;
 }
 
 h1 {
@@ -54,7 +88,7 @@ background-color: $neutral-blue-color;
 
     li {
       text-align : center;
-      flex : 0 0 20;
+      flex : 1 0 20;
     }
   }
 }
@@ -66,7 +100,21 @@ background-color: $neutral-blue-color;
       list-style : none;
     }
   }
+
+  @media #{$large} {
+    display : -webkit-flex;
+       -webkit-flex-direction : column;
+    display : flex;
+    flex-flow : row wrap;
+    justify-content : space-around;
+  }
+  .stages {
+    @media #{$large} {
+      flex : 1 auto;
+    }
+  }
 }
+
 
 .tasks {
   padding-left: 0;
@@ -77,9 +125,12 @@ background-color: $neutral-blue-color;
   border: 3px solid $bright-orange-color;
   padding : 20px;
   padding-left : 30px;
-
+  @media #{$large} {
+    max-width : 50vw;
+  }
   p {
     height : 2em;
+    line-height : 2em;
   }
 
   -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
