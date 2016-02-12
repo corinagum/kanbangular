@@ -18,7 +18,7 @@
          <input id="new_task_priority" type="text" ng-model="new_task.priority" placeholder="Priority" >
        </div>
        <div class="commit">
-         <button type="button" ng-click="addTask(new_task); new_task=null" class="button">+</button>
+         <button type="button" ng-click="addTask(new_task); new_task=null" class="button"><span class="glyphicon glyphicon-plus"></span></button>
        </div>
        <div>{{addTaskMessage}}</div>
       </fieldset>
@@ -36,7 +36,7 @@
         <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
         <div class="commit">
           <button type="button" ng-click="nextStatus(task)">&#8594;</button>
-          <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
+          <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-remove text-danger"></span></button>
         </div>
        </li>
     </ul>
@@ -53,7 +53,7 @@
       <div class="commit">
         <button type="button" ng-click="prevStatus(task);">&#8592;</button>
         <button type="button" ng-click="nextStatus(task);">&#8594;</button>
-        <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
+        <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-remove text-danger"></span></button>
       </div>
      </li>
     </ul>
@@ -69,7 +69,7 @@
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
       <div class="commit">
         <button type="button" ng-click="prevStatus(task);">&#8592;</button>
-        <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
+        <button type="button" ng-click="deleteTask(task);"><span class="glyphicon glyphicon-remove text-danger"></span></button>
       </div>
      </li>
     </ul>

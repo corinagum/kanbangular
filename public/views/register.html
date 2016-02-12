@@ -1,29 +1,30 @@
 <div>
-    <form ng-submit="signUp(register); register=null; deleteMessage()" class="auth">
-      <fieldset>
-       <div class="register_username">
-         <label for="register_username">Username&nbsp;&nbsp;</label>
-         <input id="register_username" type="text" ng-model="register.username" autofocus>
-       </div>
-       <div class="register_password">
-         <label for="register_password">Password &nbsp;</label>
-         <input id="register_password" type="password" ng-model="register.password">
-       </div>
-       <div class="register_email">
-         <label for="register_email">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-         <input id="register_email" type="text" ng-model="register.email">
-       </div>
-       <div class="register_firstName">
-         <label for="register_firstName">First Name </label>
-         <input id="register_firstName" type="text" ng-model="register.firstName">
-       </div>
-       <div class="register_lastName">
-         <label for="register_lastName">Last Name </label>
-         <input id="register_lastName" type="text" ng-model="register.lastName">
-       </div>
-       <div class="commit">
-         <button type="submit">Sign Up</button>
-       </div>
-      </fieldset>
-    </form>
+  <h2>Register New Account</h2>
+  <form ng-submit="signUp(register); register=null; deleteMessage()" class="auth">
+    <fieldset>
+     <div class="register_username">
+       <label for="register_username">Username&nbsp;&nbsp;</label>
+       <input id="register_username" type="text" ng-model="register.username" autofocus>
+     </div>
+     <div class="register_password">
+       <label for="register_password">Password &nbsp;</label>
+       <input id="register_password" type="password" ng-model="register.password">
+     </div>
+     <div class="register_email">
+       <label for="register_email">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+       <input id="register_email" type="text" ng-model="register.email">
+     </div>
+     <div class="register_firstName">
+       <label for="register_firstName">First Name </label>
+       <input id="register_firstName" type="text" ng-model="register.firstName">
+     </div>
+     <div class="register_lastName">
+       <label for="register_lastName">Last Name </label>
+       <input id="register_lastName" type="text" ng-model="register.lastName">
+     </div>
+     <div class="commit">
+       <button type="submit">Sign Up</button>
+     </div>
+    </fieldset>
+  </form>
 </div>

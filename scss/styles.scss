@@ -56,6 +56,13 @@
   font-size: 3em;
   }
 
+  h2 {
+    margin-top : 20px;
+    text-align: center;
+    color : #555;
+    font-size: 20px;
+    font-weight: bold;
+  }
 
   input {
     margin : 5px 0;
@@ -81,6 +88,12 @@
   }
 }
 
+.status-message {
+  margin: 20px;
+  padding: 20px;
+  text-align : center;
+}
+
 #kanban {
   margin : 5px;
   ul {
@@ -101,17 +114,13 @@
       flex-shrink : 1;
       flex-basis : auto;
       min-width : 30vw;
-        h2 {
-          margin-top : 20px;
-          text-align: center;
-          color : #555;
-          font-size: 20px;
-        }
     }
   }
 
   .commit {
+    margin : auto;
     margin-top : 20px;
+    text-align: center;
 
     button {
       height : 1.5em;
@@ -154,17 +163,17 @@
     font-style: italic;
   }
 }
-  div.task-card:hover {
-    -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-    box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  }
+div.task-card:hover {
+  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+}
 
-  li.task-card:hover {
-    -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-    box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  }
+li.task-card:hover {
+  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
+}
 
 .auth {
   background-color: $white;
@@ -186,3 +195,27 @@
   -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
   box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
 }
+
+#footer {
+  min-height : 50px;
+}
+
+.editable-buttons {
+  vertical-align: middle;
+}
+.btn {
+  line-height: 1em;
+  vertical-align: middle;
+}
+// .btn-primary {
+//   color: #fff;
+//   background-color: #337ab7;
+//   border-color: #2e6da4;
+//   line-height: 1em;
+//   vertical-align: -webkit-baseline-middle;
+// }
+
+// .btn-default {
+//   line-height: 1em;
+//   vertical-align: text-top
+// }

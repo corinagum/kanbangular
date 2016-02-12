@@ -110,7 +110,7 @@ app.post('/login', function(req, res) {
             success: true,
             firstName : user.firstName,
             username : user.username,
-            message : "Succesfully logged in"
+            message : "Successfully logged in"
           });
         }
         if(valid === false){
