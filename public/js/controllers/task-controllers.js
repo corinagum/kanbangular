@@ -26,6 +26,8 @@ angular.module('app')
         TaskService.addTask(newTask)
         .then(function(response) {
           if(response.data.success === false){
+            console.log("in false", response.data.message);
+            $scope.message = response.data.message;
           } else {
             $scope.tasks = response.data;
           }

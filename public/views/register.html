@@ -1,5 +1,5 @@
 <div>
-    <form>
+    <form ng-submit="signUp(register); register=null; deleteMessage()">
       <fieldset>
        <div class="register_username">
          <label for="register_username">Username</label>
@@ -22,7 +22,7 @@
          <input id="register_lastName" type="text" ng-model="register.lastName">
        </div>
        <div class="commit">
-         <button type="button" ng-click="signUp(register); register=null">Sign Up</button>
+         <button type="submit">Sign Up</button>
        </div>
       </fieldset>
     </form>

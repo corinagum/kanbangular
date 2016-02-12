@@ -1,3 +1,4 @@
+<div>{{message}}</div>
 <div>
     <form>
       <fieldset>
@@ -14,7 +15,7 @@
          <input id="new_task_priority" type="text" ng-model="new_task.priority">
        </div>
        <div class="commit">
-         <button type="button" ng-click="addTask(new_task); new_task=null">Add Task</button>
+         <button type="button" ng-click="addTask(new_task); new_task=null; deleteMessage()">Add Task</button>
        </div>
       </fieldset>
     </form>
