@@ -32,8 +32,10 @@ angular.module('app')
     $scope.logout = function(){
       UserService.logout()
         .then(function(response){
+          if(response.data.success === true){
             $location.path('/login');
             $scope.loggedIn = "Not logged in";
+          }
         });
     };
 

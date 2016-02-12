@@ -9,10 +9,6 @@
          <!-- <label for="new_task_description">Details</label> -->
          <input id="new_task_description" type="text" ng-model="new_task.description" placeholder="Details" >
        </div>
-       <div class="new_task_assignedTo">
-         <!-- <label for="new_task_assignedTo">Details</label> -->
-         <input id="new_task_assignedTo" type="text" ng-model="new_task.assignedTo" placeholder="AssignedTo" >
-       </div>
        <div class="new_task_priority">
          <!-- <label for="new_task_priority">Priority</label> -->
          <input id="new_task_priority" type="text" ng-model="new_task.priority" placeholder="Priority" >
@@ -20,7 +16,6 @@
        <div class="commit">
          <button type="button" ng-click="addTask(new_task); new_task=null" class="button">+</button>
        </div>
-       <div>{{addTaskMessage}}</div>
       </fieldset>
     </form>
   </div>
@@ -29,7 +24,7 @@
       <h2>To Do</h2>
       <ul class="tasks">
         <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'id'">
-          <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
+          <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
           <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
           <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
           <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
@@ -45,7 +40,7 @@
       <h2>In Progress</h2>
       <ul class="tasks">
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'id'">
-       <p class="task_creator" onbeforesave="editTask(task)">from {{task.firstName}}</p>
+       <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
@@ -62,7 +57,7 @@
       <h2>Done</h2>
       <ul class="tasks">
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'id'">
-       <p class="task_creator" onbeforesave="editTask(task)">from {{task.firstName}}</p>
+       <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
