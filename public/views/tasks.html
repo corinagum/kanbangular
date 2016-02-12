@@ -18,55 +18,55 @@
        </div>
       </fieldset>
     </form>
-  </div>
-  <div id="kanban">
-    <div id="to-do" class="stages">
-      <h2>To Do</h2>
-      <ul class="tasks">
-        <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'id'">
-          <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
-          <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
-          <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
-          <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
-          <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
-          <div class="commit">
-            <button type="button" ng-click="nextStatus(task)">&#8594;</button>
-            <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
-          </div>
-         </li>
-      </ul>
-    </div>
-    <div id="in-progress" class="stages">
-      <h2>In Progress</h2>
-      <ul class="tasks">
-      <li class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'id'">
-       <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
-       <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
-       <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
-       <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
-       <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
+</div>
+<div id="kanban">
+  <div id="to-do" class="stages">
+    <h2>To Do</h2>
+    <ul class="tasks">
+      <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'id'">
+        <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
+        <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
+        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
+        <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
+        <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
         <div class="commit">
-          <button type="button" ng-click="prevStatus(task);">&#8592;</button>
-          <button type="button" ng-click="nextStatus(task);">&#8594;</button>
+          <button type="button" ng-click="nextStatus(task)">&#8594;</button>
           <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
         </div>
        </li>
-      </ul>
-    </div>
-    <div id="done" class="stages">
-      <h2>Done</h2>
-      <ul class="tasks">
-      <li class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'id'">
-       <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
-       <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
-       <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
-       <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
-       <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
-        <div class="commit">
-          <button type="button" ng-click="prevStatus(task);">&#8592;</button>
-          <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
-        </div>
-       </li>
-      </ul>
-    </div>
+    </ul>
   </div>
+  <div id="in-progress" class="stages">
+    <h2>In Progress</h2>
+    <ul class="tasks">
+    <li class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'id'">
+     <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
+     <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
+     <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
+     <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
+     <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
+      <div class="commit">
+        <button type="button" ng-click="prevStatus(task);">&#8592;</button>
+        <button type="button" ng-click="nextStatus(task);">&#8594;</button>
+        <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
+      </div>
+     </li>
+    </ul>
+  </div>
+  <div id="done" class="stages">
+    <h2>Done</h2>
+    <ul class="tasks">
+    <li class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'id'">
+     <p class="task_creator" onbeforesave="editTask(task)">from {{task.UserId}}</p>
+     <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
+     <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
+     <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
+     <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
+      <div class="commit">
+        <button type="button" ng-click="prevStatus(task);">&#8592;</button>
+        <button type="button" ng-click="deleteTask(task);"> &#10060;</button>
+      </div>
+     </li>
+    </ul>
+  </div>
+</div>
