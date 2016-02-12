@@ -5,12 +5,15 @@ var bodyParser    = require('body-parser');
 var db            = require('./models');
 var User          = db.User;
 var Task          = db.Task;
+var bcrypt        = require('bcrypt');
 
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.use(session({
+  resave: false,
+  saveUninitialized: true,
   secret: 'keyboard cat',
   cookie: { maxAge: 60000000 }
 }));
@@ -22,7 +25,7 @@ function validateUser(req, res, next) {
   if(req.session.hasOwnProperty('user')) {
     return next();
   } else {
-    return res.send({
+    res.send({
       success : false,
       message : "Please sign in or register"
     });
@@ -38,56 +41,81 @@ app.post('/register', function(req,res){
   })
   .then(function(data){
     if(!data){
+      bcrypt.genSalt(10, function(err,salt){
+        bcrypt.hash(req.body.password, salt, function(err,hash){
           User.create({
             username : req.body.register.username,
-            password : req.body.register.password
+            password : hash
           });
+        });
+      });
       req.session.user = {
+            username : req.body.register.username
+          };
+      res.send({
+        success : true,
+        message : "Registered as username: " + req.body.register.username,
+        firstName : req.body.register.firstName,
         username : req.body.register.username
-      };
-    } else {
-      res.send({success : false});
-
+      });
+    }
+    if(data){
+      res.send({
+        success : false,
+        message : "User already exists, please select new username"
+      });
     }
   });
 });
 
 app.get('/logout', function(req,res){
-  delete req.session.user;
-  res.send({
-    success : true,
-    message : "You have been logged out"
-  });
+  if(req.session.hasOwnProperty('user')){
+    delete req.session.user;
+    res.send({
+      success : true,
+      message : "You have been logged out"
+    });
+  } else {
+    res.send({
+      success : false,
+      message : "You are not logged in"
+    });
+  }
 });
 
 app.post('/login', function(req, res) {
   User.findOne({
     where: {
       username : req.body.auth.username
-    }})
-    .then(function(user) {
-      if(!user) {
+  }})
+  .then(function(user) {
+    if(!user) {
       return res.send({
         success : false,
-        message : 'login not found'
+        message : 'Username not found'
       });
-      }
-      if(user.password === req.body.auth.password) {
-        req.session.user = {
-                username : req.body.auth.username
-              };
-        res.send({
-          success: true,
-          firstName : user.firstName,
-          username : user.username
-        });
-      } else {
-        res.send({
-          success : false,
-          message : 'incorrect login credentials'
-        });
-      }
-    });
+    } else {
+      bcrypt.compare(req.body.auth.password, user.password, function(err, valid){
+        if(valid === true){
+          req.session.user = {
+            username : req.body.auth.username
+          };
+          res.send({
+            success: true,
+            firstName : user.firstName,
+            username : user.username,
+            message : "Succesfully logged in"
+          });
+        }
+        if(valid === false){
+          res.send({
+            success : false,
+            message : 'Incorrect password'
+          });
+        }
+      });
+    }
+  });
 });
 
 // ****************************************

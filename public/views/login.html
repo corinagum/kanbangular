@@ -1,5 +1,5 @@
 <div>
-    <form>
+    <form ng-submit="login(auth); auth=null; deleteMessage()">
       <fieldset>
        <div class="auth_username">
          <label for="auth_username">Username</label>
@@ -10,7 +10,7 @@
          <input id="auth_password" type="password" ng-model="auth.password">
        </div>
        <div class="commit">
-         <button type="button" ng-click="login(auth); auth=null">Sign In</button>
+         <button type="submit" >Sign In</button>
        </div>
       </fieldset>
     </form>

@@ -12,12 +12,15 @@
   <h1>{{ "Kanbangular" }}</h1>
   <div id="nav">
     <ul>
-      <li><a ng-href='/'>Home</a></li>
-      <li><a ng-href='/login'>Log In</a></li>
-      <li><a ng-href='/register'>Register</a></li>
-      <li><a ng-href='/logout' ng-click='logout()'>Log Out</a></li>
-      <li>You are logged in as {{username}}</li>
+      <li><a ng-href='/' ng-click='deleteMessage()'>Home</a></li>
+      <li><a ng-href='/login' ng-click='deleteMessage()'>Log In</a></li>
+      <li><a ng-href='/register' ng-click='deleteMessage()'>Register</a></li>
+      <li><a ng-href='/logout' ng-click='logout(); deleteMessage()'>Log Out</a></li>
+      <li>{{loggedIn}}</li>
     </ul>
+    <div>
+      {{message}}
+    </div>
   </div>
   <div ng-view>
 
