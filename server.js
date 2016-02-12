@@ -27,7 +27,7 @@ function validateUser(req, res, next) {
   } else {
     res.send({
       success : false,
-      message : "Please sign in or register"
+      message : "Not Authorized, Please sign in or register."
     });
   }
 }
@@ -39,31 +39,36 @@ app.post('/register', function(req,res){
       username: req.body.register.username
     }
   })
-  .then(function(data){
-    if(!data){
+  .then(function(user){
+    if(!user){
       bcrypt.genSalt(10, function(err,salt){
         bcrypt.hash(req.body.register.password, salt, function(err,hash){
           User.create({
             username : req.body.register.username,
-            password : hash
+            password : hash,
+            email    : req.body.register.email,
+            firstName: req.body.register.firstName,
+            lastName : req.body.register.lastName
+          })
+          .then(function(data){
+            req.session.user = {
+              username : data.username,
+              firstName : data.firstName,
+              id : data.id
+            };
+            console.log('register', req.session.user);
+            res.send({
+              success : true,
+              message : "Registered as username: " + req.body.register.username +".",
+            });
           });
         });
       });
-      req.session.user = {
-            username : req.body.register.username,
-            firstName : req.body.firstName
-          };
-      res.send({
-        success : true,
-        message : "Registered as username: " + req.body.register.username,
-        firstName : req.body.register.firstName,
-        username : req.body.register.username
-      });
     }
-    if(data){
+    if(user){
       res.send({
         success : false,
-        message : "User already exists, please select new username"
+        message : "User already exists, please select new username."
       });
     }
   });
@@ -74,12 +79,12 @@ app.get('/logout', function(req,res){
     delete req.session.user;
     res.send({
       success : true,
-      message : "You have been logged out"
+      message : "You have been logged out."
     });
   } else {
     res.send({
       success : false,
-      message : "You are not logged in"
+      message : "You are not logged in."
     });
   }
 });
@@ -93,26 +98,27 @@ app.post('/login', function(req, res) {
     if(!user) {
       return res.send({
         success : false,
-        message : 'Username not found'
+        message : 'Username not found.'
       });
     } else {
       bcrypt.compare(req.body.auth.password, user.password, function(err, valid){
         if(valid === true){
           req.session.user = {
             username : req.body.auth.username,
-            firstName : user.firstName
+            firstName : user.firstName,
+            id : user.id
           };
           res.send({
             success: true,
             firstName : user.firstName,
             username : user.username,
-            message : "Succesfully logged in"
+            message : "Succesfully logged in."
           });
         }
         if(valid === false){
           res.send({
             success : false,
-            message : 'Incorrect password'
+            message : 'Incorrect password.'
           });
         }
       });
@@ -130,13 +136,15 @@ app.get('/api', function(req, res) {
 });
 
 app.post('/api', validateUser, function(req, res) {
+  console.log(req.session.user);
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,
     status : "To Do",
     description : req.body.task.description,
-    assignedTo : "a person",
-    UserId : 1
+    assignedTo : req.body.task.assignedTo,
+    createdBy : req.session.user.firstName,
+    UserId : req.session.user.id
   })
   .then(function(task) {
     Task.findAll()

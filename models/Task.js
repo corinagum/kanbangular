@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     status : DataTypes.STRING,
     description: DataTypes.TEXT,
     assignedTo: DataTypes.STRING,
+    createdBy: DataTypes.STRING
 
   }, {
     classMethods: {
