@@ -1,6 +1,6 @@
   <h2>New Task</h2>
 <div class="task-card">
-    <form>
+    <form ng-submit="addTask(new_task); new_task=null">
       <fieldset>
        <div class="new_task_title task_title">
          <!-- <label for="new_task_title">Title &nbsp &nbsp</label> -->
@@ -19,7 +19,7 @@
          <input id="new_task_priority" type="text" ng-model="new_task.priority" placeholder="Priority" >
        </div>
        <div class="commit">
-         <button type="button" ng-click="addTask(new_task); new_task=null" class="button"><span class="glyphicon glyphicon-plus"></span></button>
+         <button type="submit" class="button"><span class="glyphicon glyphicon-plus"></span></button>
        </div>
        <div>{{addTaskMessage}}</div>
       </fieldset>
