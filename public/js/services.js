@@ -21,11 +21,6 @@ angular.module('app')
   };
 
   this.nextStatus = function(task) {
-    if(task.status === "To Do") {
-      task.status = "In Progress";
-    } else {
-      task.status = "Done";
-    }
     return $http.put('/api', {
         task : task
       });

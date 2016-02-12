@@ -7,27 +7,46 @@ angular.module('app')
       });
 
     $scope.nextStatus = function(task){
-      TaskService.nextStatus(task)
+      var tempTask = angular.copy(task);
+      if(tempTask.status === "To Do") {
+        tempTask.status = "In Progress";
+      } else {
+        tempTask.status = "Done";
+      }
+      TaskService.nextStatus(tempTask)
         .then(function(response) {
-            $scope.tasks = response.data;
+          if(response.data.success){
+            $scope.tasks = response.data.tasks;
+          } else {
+            $scope.addTaskMessage = response.data.message;
+          }
         }, function(err) {
-        });
+      });
     };
 
-    $scope.preveStatus = function(task){
-      TaskService.prevStatus(task)
+    $scope.prevStatus = function(task){
+      var tempTask = angular.copy(task);
+      if(tempTask.status === "Done") {
+        tempTask.status = "In Progress";
+      } else {
+        tempTask.status = "To Do";
+      }
+      TaskService.prevStatus(tempTask)
         .then(function(response) {
-            $scope.tasks = response.data;
+          if(response.data.success){
+            $scope.tasks = response.data.tasks;
+          } else {
+            $scope.addTaskMessage = response.data.message;
+          }
         }, function(err) {
-        });
+      });
     };
 
     $scope.addTask = function (newTask) {
         TaskService.addTask(newTask)
         .then(function(response) {
           if(response.data.success === false){
-            console.log("in false", response.data.message);
-            $scope.message = response.data.message;
+            $scope.addTaskMessage = response.data.message;
           } else {
             $scope.tasks = response.data;
           }
@@ -38,18 +57,25 @@ angular.module('app')
     $scope.editTask = function(task) {
       TaskService.editTask(task)
         .then(function(response) {
+          if(response.data.success){
             $scope.tasks = response.data;
+          } else {
+            $scope.addTaskMessage = response.data.message;
+          }
         }, function(err) {
       });
     };
 
     $scope.deleteTask = function (task) {
-      TaskService.deleteTask(task);
-    for (var i = 0; i < $scope.tasks.length; i++) {
-      if($scope.tasks[i].id === task.id) {
-        $scope.tasks.splice(i, 1);
-      }
-    }
+      TaskService.deleteTask(task)
+        .then(function(response) {
+          if(response.data.success){
+            $scope.tasks = response.data;
+          } else {
+            $scope.addTaskMessage = response.data.message;
+          }
+        }, function(err) {
+      });
     };
 
 

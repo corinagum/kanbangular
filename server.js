@@ -45,14 +45,17 @@ app.post('/register', function(req,res){
         bcrypt.hash(req.body.register.password, salt, function(err,hash){
           User.create({
             username : req.body.register.username,
-            password : hash
+            password : hash,
+            email : req.body.register.email,
+            firstName : req.body.register.firstName,
+            lastName : req.body.register.lastName
           });
         });
       });
       req.session.user = {
-            username : req.body.register.username,
-            firstName : req.body.firstName
-          };
+        username : req.body.register.username,
+        firstName : req.body.register.firstName,
+      };
       res.send({
         success : true,
         message : "Registered as username: " + req.body.register.username,
@@ -99,8 +102,9 @@ app.post('/login', function(req, res) {
       bcrypt.compare(req.body.auth.password, user.password, function(err, valid){
         if(valid === true){
           req.session.user = {
-            username : req.body.auth.username,
-            firstName : user.firstName
+            username : user.username,
+            firstName : user.firstName,
+            id : user.id
           };
           res.send({
             success: true,
@@ -130,13 +134,15 @@ app.get('/api', function(req, res) {
 });
 
 app.post('/api', validateUser, function(req, res) {
+  console.log(req.session.user);
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,
     status : "To Do",
     description : req.body.task.description,
-    assignedTo : "a person",
-    UserId : 1
+    assignedTo : req.body.task.assignedTo,
+    createdBy : req.session.user.firstName,
+    UserId : req.session.user.id
   })
   .then(function(task) {
     Task.findAll()
@@ -146,7 +152,7 @@ app.post('/api', validateUser, function(req, res) {
   });
 });
 
-app.put('/api', function(req, res) {
+app.put('/api', validateUser, function(req, res) {
   Task.update({
     title : req.body.task.title,
     description : req.body.task.description,
@@ -160,16 +166,25 @@ app.put('/api', function(req, res) {
   .then(function(task) {
     Task.findAll()
       .then(function(data){
-        res.send(data);
+        res.send({
+          success : true,
+          tasks : data
+        });
       });
   });
 });
 
-app.delete('/api/:id', function(req, res) {
+app.delete('/api/:id', validateUser, function(req, res) {
   Task.destroy( {
     where : {
       id : req.params.id
-    }});
+  }})
+  .then(function(data){
+    Task.findAll()
+      .then(function(data){
+        res.send(data);
+      });
+  });
 });
 
 //Angular fall-through route
