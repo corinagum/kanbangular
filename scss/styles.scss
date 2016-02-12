@@ -56,83 +56,83 @@
   font-size: 3em;
   }
 
-  h2 {
-    // margin-top : 20px;
-    text-align: center;
-    color : #555;
-    font-size: 20px;
-  }
 
   input {
     margin : 5px 0;
   }
 
 
-  #nav {
+#nav {
   background-color: $neutral-blue-color;
   height : 3em;
+  ul {
+    list-style : none;
+    display : -webkit-flex;
+       -webkit-flex-direction : row;
+    display : flex;
+    flex-flow : row wrap;
+    justify-content : space-around;
 
+    li {
+      text-align : center;
+      flex : 1 0 20;
+      line-height: 3em;
+    }
+  }
+}
 
-    ul {
+#kanban {
+  margin : 5px;
+  ul {
+    li {
       list-style : none;
-      display : -webkit-flex;
-         -webkit-flex-direction : row;
-      display : flex;
-      flex-flow : row wrap;
-      justify-content : space-around;
-
-      li {
-        text-align : center;
-        flex : 1 0 20;
-        line-height: 3em;
-      }
     }
   }
 
-  #kanban {
-    margin : 5px;
-    ul {
-      li {
-        list-style : none;
-      }
-    }
-
-    @media #{$large} {
-      display : -webkit-flex;
-         -webkit-flex-direction : row;
-      display : flex;
-      flex-flow : row nowrap;
-      justify-content : space-around;
+  @media #{$large} {
+    display : -webkit-flex;
+       -webkit-flex-direction : row;
+    display : flex;
+    flex-flow : row nowrap;
+    justify-content : space-around;
 
     .stages {
-      flex : 1 auto;
-      display : flex
+      flex-grow : 1;
+      flex-shrink : 1;
+      flex-basis : auto;
+      min-width : 30vw;
+        h2 {
+          margin-top : 20px;
+          text-align: center;
+          color : #555;
+          font-size: 20px;
+        }
     }
-    }
-
-    .commit {
-      margin-top : 20px;
-
-      button {
-        height : 1.5em;
-        line-height : 1.5em;
-      }
-    }
-
   }
+
+  .commit {
+    margin-top : 20px;
+
+    button {
+      height : 1.5em;
+      line-height : 1.5em;
+    }
+  }
+}
 
 
 .tasks {
   padding-left: 0;
-  // margin 0 auto;
+  margin : 0 auto;
 }
+
 .task-card {
   background-color: $white;
-  // margin : 0 auto;
+  margin : 0 auto;
   margin-top : 20px;
   border: 3px solid $bright-orange-color;
-  // padding : 20px;
-  // padding-left : 30px;
+  padding : 20px;
+  padding-left : 30px;
   @media #{$large} {
     width : 30vw;
   }
