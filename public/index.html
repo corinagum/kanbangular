@@ -18,13 +18,14 @@
       <li><a ng-href='/logout' ng-click='logout(); deleteMessage()'>Log Out</a></li>
       <li>{{loggedIn}}</li>
     </ul>
-    <div>
+  </div>
+    <div class="status-message">
       {{message}}
     </div>
-  </div>
   <div ng-view>
 
   </div> <!-- // end div ng-view -->
+  <div id="footer"></div>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script> <!-- load angular -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.1.9/js/xeditable.min.js"></script>
