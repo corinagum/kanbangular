@@ -35,6 +35,9 @@ angular.module('app')
           if(response.data.success === true){
             $location.path('/login');
             $scope.loggedIn = "Not logged in";
+          } else {
+            $location.path('/login');
+            $scope.message = "Cannot log out, not logged in.";
           }
         });
     };
