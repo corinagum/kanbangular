@@ -19,7 +19,7 @@ angular.module('app')
             $location.path('/');
           }
           if(response.data.hasOwnProperty('message')){
-            $scope.message = response.data.message;
+            $scope.loginMessage = response.data.message;
           }
         });
     };
@@ -28,9 +28,9 @@ angular.module('app')
       UserService.signUp(register)
         .then(function(response){
           if(response.data.success === false){
-            $scope.message = response.data.message;
+            $scope.registerMessage = response.data.message;
           } else {
-            $scope.message = response.data.message;
+            $scope.registerMessage = response.data.message;
             $scope.firstName = response.data.firstName;
             $scope.loggedIn = "Logged in as " + response.data.username;
             $location.path('/');
@@ -53,6 +53,8 @@ angular.module('app')
 
     $scope.deleteMessage = function(){
       $scope.message = null;
+      $scope.loginMessage = null;
+      $scope.registerMessage = null;
     };
 
 }]);

@@ -6,7 +6,10 @@ var db            = require('./models');
 var User          = db.User;
 var Task          = db.Task;
 var bcrypt        = require('bcrypt');
-
+var middlewareValidator = require('./lib/middleware-validator.js');
+var addTaskKeyValidator = middlewareValidator(['title', 'priority', 'description', 'assignedTo'], 'task');
+var registerKeyValidator = middlewareValidator(['username', 'password', 'email', 'firstName', 'lastName'], 'register');
+var loginKeyValidator = middlewareValidator(['username', 'password'], 'auth');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -32,8 +35,18 @@ function validateUser(req, res, next) {
   }
 }
 
+function validateEmail(req, res, next){
+  if((/.+@.+\..+/i).test(req.body.register.email)) {
+    next();
+  } else {
+    res.send({
+      success : false,
+      message : "Invalid email"
+    });
+  }
+}
 
-app.post('/register', function(req,res){
+app.post('/register', registerKeyValidator, validateEmail, function(req,res){
   User.findOne({
     where:{
       username: req.body.register.username
@@ -87,7 +100,7 @@ app.get('/logout', function(req,res){
   }
 });
 
-app.post('/login', function(req, res) {
+app.post('/login', loginKeyValidator, function(req, res) {
   User.findOne({
     where: {
       username : req.body.auth.username
@@ -145,7 +158,7 @@ app.get('/api', function(req, res) {
     });
 });
 
-app.post('/api', validateUser, function(req, res) {
+app.post('/api', validateUser, addTaskKeyValidator, function(req, res) {
   Task.create({
     title : req.body.task.title,
     priority: req.body.task.priority,

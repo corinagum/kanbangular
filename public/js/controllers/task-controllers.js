@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('TaskController', ['$scope', 'TaskService', function ($scope, TaskService) {
+  .controller('TaskController', ['$scope', '$location', 'TaskService', function ($scope, $location, TaskService) {
 
     TaskService.getTasks()
       .then(function successCallback(response) {
@@ -18,7 +18,8 @@ angular.module('app')
           if(response.data.success){
             $scope.tasks = response.data.tasks;
           } else {
-            $scope.addTaskMessage = response.data.message;
+            $location.path('/login');
+            // $scope.message = response.data.message;
           }
         }, function(err) {
       });
@@ -36,7 +37,8 @@ angular.module('app')
           if(response.data.success){
             $scope.tasks = response.data.tasks;
           } else {
-            $scope.addTaskMessage = response.data.message;
+            $location.path('/login');
+            // $scope.message = response.data.message;
           }
         }, function(err) {
       });
@@ -60,7 +62,8 @@ angular.module('app')
           if(response.data.success){
             $scope.tasks = response.data.tasks;
           } else {
-            $scope.addTaskMessage = response.data.message;
+            $location.path('/login');
+            // $scope.addTaskMessage = response.data.message;
           }
         }, function(err) {
       });
@@ -72,12 +75,16 @@ angular.module('app')
           if(response.data.success){
             $scope.tasks = response.data.tasks;
           } else {
-            $scope.addTaskMessage = response.data.message;
+            $location.path('/login');
+            // $scope.modifyTaskMessage = response.data.message;
           }
         }, function(err) {
       });
     };
 
+    $scope.deleteAddTaskMessage = function(){
+      $scope.addTaskMessage = null;
+    };
 
     }]);
 
