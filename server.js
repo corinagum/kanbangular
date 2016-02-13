@@ -10,7 +10,6 @@ var middlewareValidator = require('./lib/middleware-validator.js');
 var addTaskKeyValidator = middlewareValidator(['title', 'priority', 'description', 'assignedTo'], 'task');
 var registerKeyValidator = middlewareValidator(['username', 'password', 'email', 'firstName', 'lastName'], 'register');
 var loginKeyValidator = middlewareValidator(['username', 'password'], 'auth');
-
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
