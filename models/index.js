@@ -10,17 +10,8 @@ var db        = {};
 
 
 
-// if(process.env.HEROKU_POSTGRESQL_CHARCOAL_URL ) {
-//   var sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_CHARCOAL_URL, {
-//     dialect : 'postgres',
-//     protocol: 'postgres',
-//     port : match[4],
-//     host : match[3],
-//     logging : true
-//     });
-// }
-if (config.use_env_variable) {
- var sequelize = new Sequelize(process.env[config.use_env_variable]);
+if(!process.env.hasOwnProperty('HEROKU_POSTGRESQL_CHARCOAL_URL') ) {
+  var sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_CHARCOAL_URL);
 } else {
  var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
