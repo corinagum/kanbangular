@@ -7,6 +7,7 @@ angular.module('app')
       });
 
     $scope.nextStatus = function(task){
+      console.log(Date('YYYY-MM-DD HH:MM:SS'));
       var tempTask = angular.copy(task);
       if(tempTask.status === "To Do") {
         tempTask.status = "In Progress";
