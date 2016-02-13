@@ -184,7 +184,8 @@ app.put('/api', validateUser, function(req, res) {
     title : req.body.task.title,
     description : req.body.task.description,
     priority : req.body.task.priority,
-    status : req.body.task.status
+    status : req.body.task.status,
+    finishedAt: req.body.task.status
   }, {
     where : {
       id : req.body.task.id

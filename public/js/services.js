@@ -20,6 +20,7 @@ angular.module('app')
     });
   };
 
+//STATUS CHANGES
   this.nextStatus = function(task) {
     return $http.put('/api', {
         task : task
@@ -31,6 +32,7 @@ angular.module('app')
         task : task
       });
     };
+
 
 // DELETE
     this.deleteTask = function(task) {
