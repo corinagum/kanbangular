@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     assignedTo: DataTypes.STRING,
     createdBy : DataTypes.STRING,
-    finishedAt : DataTypes.DATE,
     project : DataTypes.STRING
   }, {
     classMethods: {
