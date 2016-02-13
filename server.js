@@ -223,6 +223,6 @@ app.get('*', function(req, res){
   res.sendFile('/public/index.html', { root : __dirname});
 });
 
-var server = app.listen(4000, function() {
+var server = app.listen(process.env.PORT || 4000, function() {
   db.sequelize.sync();
 });
