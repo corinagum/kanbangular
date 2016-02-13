@@ -1,9 +1,19 @@
 angular.module('app')
   .controller('UserController', ['$scope', 'UserService', '$location', function ($scope, UserService, $location) {
+
+    UserService.authStatus()
+      .then(function(response){
+        if(response.data.success){
+          $scope.loggedIn = "Logged in as " + response.data.username;
+        } else {
+          $scope.loggedIn = "Not logged in";
+        }
+      });
+
     $scope.login = function(auth) {
       UserService.login(auth)
         .then(function(response) {
-          if(response.data.success === true) {
+          if(response.data.success) {
             $scope.firstName = response.data.firstName;
             $scope.loggedIn = "Logged in as " + response.data.username;
             $location.path('/');
@@ -13,6 +23,7 @@ angular.module('app')
           }
         });
     };
+
     $scope.signUp = function(register) {
       UserService.signUp(register)
         .then(function(response){
@@ -26,8 +37,6 @@ angular.module('app')
           }
         });
     };
-
-    $scope.loggedIn = "Not logged in";
 
     $scope.logout = function(){
       UserService.logout()

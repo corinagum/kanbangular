@@ -27,15 +27,10 @@ angular.module('app')
     };
 
     this.prevStatus = function(task) {
-      if(task.status === "In Progress") {
-        task.status = "To Do";
-      } else {
-        task.status = "In Progress";
-      }
       return $http.put('/api', {
-          task : task
-        });
-      };
+        task : task
+      });
+    };
 
 // DELETE
     this.deleteTask = function(task) {
@@ -59,6 +54,11 @@ angular.module('app')
 // LOGOUT
     this.logout = function(){
       return $http.get('/logout');
+    };
+
+//AUTHORIZATION STATUS
+    this.authStatus = function(){
+      return $http.get('/authStatus');
     };
 
   }]);
