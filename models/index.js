@@ -12,7 +12,7 @@ var db        = {};
 
 
 
-if(!process.env.hasOwnProperty('HEROKU_POSTGRESQL_CHARCOAL_URL') ) {
+if(process.env.hasOwnProperty('HEROKU_POSTGRESQL_CHARCOAL_URL') ) {
   var sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_CHARCOAL_URL);
 } else {
  var sequelize = new Sequelize(config.database, config.username, config.password, config);
