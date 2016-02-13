@@ -87,6 +87,10 @@
     }
   }
 }
+#loggedIn {
+  flex : 1 0 20;
+  align-self : flex-end;
+}
 
 .status-message {
   margin: 20px;
