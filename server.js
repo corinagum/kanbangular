@@ -149,6 +149,10 @@ app.get('/authStatus', function(req, res){
   }
 });
 
+// app.get('/archive', function(req, res) {
+//   res.send({ success : true });
+// });
+
 // ****************************************
 // CRUD Operations
 app.get('/api', function(req, res) {
