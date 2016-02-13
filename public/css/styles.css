@@ -183,3 +183,7 @@ li.task-card:hover {
 .btn {
   line-height: 1em;
   vertical-align: middle; }
+
+.temp-archive {
+  margin-right: 30px;
+  text-align: right; }

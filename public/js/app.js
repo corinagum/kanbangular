@@ -18,6 +18,10 @@ app
       .when('/logout', {
         controller : "NavController"
       })
+      .when('/archive', {
+        templateUrl : 'views/archive.html',
+        controller : "TaskController"
+      })
       .otherwise({
         templateUrl : 'views/404.html'
     });
