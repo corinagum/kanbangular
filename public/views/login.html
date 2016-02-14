@@ -4,11 +4,11 @@
     <fieldset>
      <div class="auth_username">
        <label for="auth_username">Username</label>
-       <input id="auth_username" type="text" ng-model="auth.username" autofocus>
+       <input id="auth_username" type="text" ng-model="auth.username" autofocus required>
      </div>
      <div class="auth_password">
        <label for="auth_password">Password </label>
-       <input id="auth_password" type="password" ng-model="auth.password">
+       <input id="auth_password" type="password" ng-model="auth.password" required>
      </div>
      <div ngIf"loginMessage!=null" class="status-message">{{loginMessage}}</div>
      <div class="commit">
