@@ -1,4 +1,4 @@
-angular.module("app", ['ngRoute', 'xeditable']);
+angular.module("app", ['ngRoute', 'xeditable', 'ngAnimate']);
 
 var app = angular.module("app");
 

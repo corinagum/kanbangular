@@ -64,9 +64,6 @@
     font-weight: bold;
   }
 
-  input {
-    margin : 5px 0;
-  }
 
 
 #nav {
@@ -219,4 +216,21 @@ li.task-card:hover {
 .temp-archive{
   margin-right : 30px;
   text-align: right;
+}
+
+  input {
+    margin : 5px 0;
+    width: 100%;
+  }
+
+////////// ANIMATIONS \\\\\\\\\\\\\
+
+.ng-enter {
+  transition-delay: 0.25s;
+  transition:0.25s linear all;
+  opacity:0;
+}
+.ng-enter.ng-enter-active {
+  transition-delay: 0.25s;
+  opacity:1;
 }
