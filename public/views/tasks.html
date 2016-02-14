@@ -3,16 +3,16 @@
     <form ng-submit="addTask(new_task); deleteMessage(); deleteAddTaskMessage(); new_task=null">
       <fieldset>
        <div class="new_task_title task_title">
-         <input id="new_task_title" id="input-group" type="text" ng-model="new_task.title" placeholder="Title" autofocus>
+         <input id="new_task_title" id="input-group" type="text" ng-model="new_task.title" placeholder="Title" autofocus required>
        </div>
        <div class="new_task_description">
-         <input id="new_task_description" type="text" ng-model="new_task.description" placeholder="Details" >
+         <input id="new_task_description" type="text" ng-model="new_task.description" placeholder="Details" required>
        </div>
        <div class="new_task_assignedTo">
-         <input id="new_task_assignedTo" type="text" ng-model="new_task.assignedTo" placeholder="Assign To" >
+         <input id="new_task_assignedTo" type="text" ng-model="new_task.assignedTo" placeholder="Assign To" required>
        </div>
        <div class="new_task_priority">
-         <input id="new_task_priority" type="text" ng-model="new_task.priority" placeholder="Priority" >
+         <input id="new_task_priority" type="number" ng-model="new_task.priority" placeholder="Priority" required>
        </div>
        <div ng-cloak class="status-message">{{addTaskMessage}}</div>
        <div class="commit">

@@ -155,8 +155,7 @@ h2 {
     font-style: italic;
     overflow: hidden; }
   .task-card .task_description {
-    max-height: 2em;
-    overflow: hidden; }
+    height: 1000px; }
   .task-card .task_priority {
     display: flex;
     max-width: 2em; }
