@@ -1,6 +1,14 @@
 angular.module('app')
   .controller('UserController', ['$scope', 'UserService', '$location', function ($scope, UserService, $location) {
 
+    $scope.isLoggedIn = function() {
+      if($scope.loggedIn === "Not logged in") {
+        return false;
+      } else {
+        return true;
+      }
+    };
+
     UserService.authStatus()
       .then(function(response){
         if(response.data.success){
