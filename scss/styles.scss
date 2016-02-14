@@ -145,26 +145,52 @@
   border: 3px solid $bright-orange-color;
   padding : 20px;
   padding-left : 30px;
+  overflow: hidden;
   @media #{$large} {
     width : 30vw;
   }
   p {
     height : 2em;
     line-height : 2em;
+    overflow: hidden;
   }
 
   -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
   box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
-
+  .priority-and-creator-holder {
+    display : -webkit-flex;
+           -webkit-flex-direction : row;
+        display : flex;
+        flex-flow : row nowrap;
+        justify-content : space-between;
+  }
   .task_title{
-    padding-bottom : 5px;
+
+    padding: 10px 0;
     border-bottom: 2px solid red;
     text-transform: capitalize;
+    overflow: hidden;
   }
   .task_creator {
+    display: flex;
     text-align : right;
     font-style: italic;
+    overflow: hidden;
+  }
+  .task_description{
+    max-height: 2em;
+    overflow: hidden;
+  }
+
+  .task_priority{
+    display: flex;
+    max-width: 2em;
+  }
+
+  .editable {
+    max-height: 2em;
+    overflow: hidden;
   }
 
 }

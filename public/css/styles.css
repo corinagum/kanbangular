@@ -127,6 +127,7 @@ h2 {
   border: 3px solid #FA6900;
   padding: 20px;
   padding-left: 30px;
+  overflow: hidden;
   -webkit-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 7px 10px 14px -4px rgba(0, 0, 0, 0.75); }
@@ -135,14 +136,33 @@ h2 {
       width: 30vw; } }
   .task-card p {
     height: 2em;
-    line-height: 2em; }
+    line-height: 2em;
+    overflow: hidden; }
+  .task-card .priority-and-creator-holder {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between; }
   .task-card .task_title {
-    padding-bottom: 5px;
+    padding: 10px 0;
     border-bottom: 2px solid red;
-    text-transform: capitalize; }
+    text-transform: capitalize;
+    overflow: hidden; }
   .task-card .task_creator {
+    display: flex;
     text-align: right;
-    font-style: italic; }
+    font-style: italic;
+    overflow: hidden; }
+  .task-card .task_description {
+    max-height: 2em;
+    overflow: hidden; }
+  .task-card .task_priority {
+    display: flex;
+    max-width: 2em; }
+  .task-card .editable {
+    max-height: 2em;
+    overflow: hidden; }
 
 div.task-card:hover {
   -webkit-box-shadow: 7px 10px 14px -1px rgba(0, 0, 0, 0.75);
