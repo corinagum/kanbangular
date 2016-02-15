@@ -68,6 +68,9 @@ h2 {
 
 #nav {
   background-color: #A7DBD8;
+  -webkit-box-shadow: inset 2px 5px 14px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 2px 5px 14px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 2px 5px 14px -4px rgba(0, 0, 0, 0.75);
   height: 3em; }
   #nav ul {
     list-style: none;
@@ -216,3 +219,15 @@ input {
 .ng-enter.ng-enter-active {
   transition-delay: 0.25s;
   opacity: 1; }
+
+@media only screen and (min-width: 800px) {
+  #to-do-task-card {
+    visibility: visible; } }
+
+@media only screen and (min-width: 800px) {
+  #in-progress-task-card {
+    visibility: visible; } }
+
+@media only screen and (min-width: 800px) {
+  #done-task-card {
+    visibility: visible; } }

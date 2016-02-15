@@ -15,7 +15,7 @@
          <input id="new_task_priority" type="number" ng-model="new_task.priority" placeholder="Priority" required>
        </div>
        <div class="new_task_moment_due">
-         <input id="new_task_moment_due" type="datetime-local" ng-model="new_task.momentDue" placeholder="Due Date" data-date-inline-picker="false" data-date-open-on-focus="true" required>
+         <input id="new_task_moment_due" type="date" ng-model="new_task.momentDue" placeholder="Due Date" data-date-inline-picker="false" data-date-open-on-focus="true" required>
        </div>
        <div ng-cloak class="status-message">{{addTaskMessage}}</div>
        <div class="commit">
@@ -27,18 +27,17 @@
 <!-- <div class="temp-archive">(Temporary): <a ng-href="/archive"> Archive</a></div> -->
 <div id="kanban">
   <div id="to-do" class="stages">
-    <h2>To Do</h2>
-    <ul class="tasks">
+    <h2 ng-click="mobileShowHideToDo()">To Do</h2>
+    <ul class="tasks" ng-show="mobileToggleToDo">
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'-priority'">
         <div class="priority-and-creator-holder">
-          <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
+          <p id="to-do-task-card" class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
           <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
         </div>
         <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
         <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
         <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
-     <p class="task_momentDue" editable-datetime="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amCalendar }}</p>
-       <!-- <div ng-cloak class="bg-danger status-message">{{modifyTaskMessage}}</div> commented out because currently we redirect instead of display message : uncomment if we add error message with login redirect -->
+     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amDateFormat: 'dddd, MMMM Do YYYY' }}</p>
         <div class="commit">
           <button type="button" ng-click="nextStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-right"></span></button>
           <button type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
@@ -47,9 +46,9 @@
     </ul>
   </div>
   <div id="in-progress" class="stages">
-    <h2>In Progress</h2>
-    <ul class="tasks">
-    <li class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'-priority'">
+    <h2 ng-click="mobileShowHideInProgress()">In Progress</h2>
+    <ul class="tasks" ng-show="mobileToggleInProgress">
+    <li id="in-progress-task-card" class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'-priority'">
      <div class="priority-and-creator-holder">
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
@@ -57,8 +56,7 @@
      <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
-     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amCalendar }}</p>
-     <!-- <div ng-cloak class="bg-danger status-message">{{modifyTaskMessage}}</div> -->
+     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amDateFormat: 'dddd, MMMM Do YYYY' }}</p>
       <div class="commit">
         <button type="button" ng-click="prevStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-left"></span></button>
         <button type="button" ng-click="nextStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -68,9 +66,9 @@
     </ul>
   </div>
   <div id="done" class="stages">
-    <h2>Done</h2>
-    <ul class="tasks">
-    <li class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'-priority'">
+    <h2 ng-click="mobileShowHideDone()">Done</h2>
+    <ul class="tasks" ng-show="mobileToggleDone">
+    <li id="done-task-card" class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'-priority'">
      <div class="priority-and-creator-holder">
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
        <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
@@ -78,8 +76,7 @@
      <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
-     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amCalendar }}</p>
-      <!-- <div ng-cloak class="bg-danger status-message">{{modifyTaskMessage}}</div> -->
+     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amDateFormat: 'dddd, MMMM Do YYYY' }}</p>
       <div class="commit">
         <button type="button" ng-click="prevStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-left"></button>
         <button type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>

@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('TaskController', ['$scope', '$location', 'TaskService', 'moment', function ($scope, $location, TaskService, moment) {
+  .controller('TaskController', ['$scope', '$location', 'TaskService', 'moment', '$window', function ($scope, $location, TaskService, moment, $window) {
 
     TaskService.getTasks()
       .then(function successCallback(response) {
@@ -89,6 +89,44 @@ angular.module('app')
     $scope.formatDate = function(date) {
       return moment(date).format('MM/dd/yyyy');
     };
+
+    $scope.$watch(function(){
+      return $window.innerWidth;
+    }, function(value){
+      if(value < 800) {
+        $scope.mobileToggleToDo = true;
+        $scope.mobileToggleInProgress = false;
+        $scope.mobileToggleDone = false;
+
+
+        $scope.mobileShowHideToDo = function(){
+          $scope.mobileToggleToDo = !$scope.mobileToggleToDo;
+          $scope.mobileToggleInProgress = false;
+          $scope.mobileToggleDone = false;
+        };
+
+        $scope.mobileShowHideInProgress = function(){
+        $scope.mobileToggleToDo = false;
+        $scope.mobileToggleInProgress = !$scope.mobileToggleInProgress;
+        $scope.mobileToggleDone = false;
+        };
+
+        $scope.mobileShowHideDone = function(){
+          $scope.mobileToggleToDo = false;
+          $scope.mobileToggleInProgress = false;
+          $scope.mobileToggleDone = !$scope.mobileToggleDone;
+        };
+      } else {
+        $scope.mobileToggleToDo = true;
+        $scope.mobileToggleInProgress = true;
+        $scope.mobileToggleDone = true;
+
+        $scope.mobileShowHideToDo = function(){};
+        $scope.mobileShowHideInProgress = function(){};
+        $scope.mobileShowHideDone = function(){};
+      }
+    });
+
 
     }]);
 

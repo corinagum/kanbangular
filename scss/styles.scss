@@ -68,6 +68,9 @@
 
 #nav {
   background-color: $neutral-blue-color;
+  -webkit-box-shadow: inset 2px 5px 14px -4px  rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 2px 5px 14px -4px  rgba(0,0,0,0.75);
+  box-shadow: inset 2px 5px 14px -4px rgba(0,0,0,0.75);
   height : 3em;
   ul {
     list-style : none;
@@ -258,4 +261,20 @@ li.task-card:hover {
 .ng-enter.ng-enter-active {
   transition-delay: 0.25s;
   opacity:1;
+}
+#to-do-task-card{
+  @media #{$large} {
+   visibility: visible;
+  }
+
+}
+#in-progress-task-card{
+  @media #{$large} {
+   visibility: visible;
+  }
+}
+#done-task-card{
+  @media #{$large} {
+   visibility: visible;
+  }
 }
