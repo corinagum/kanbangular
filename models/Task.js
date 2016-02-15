@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     assignedTo: DataTypes.STRING,
     createdBy : DataTypes.STRING,
-    project : DataTypes.STRING
+    project : DataTypes.STRING,
+    momentFinished : DataTypes.STRING,
+    momentCreated : DataTypes.STRING,
+    momentDue : DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {

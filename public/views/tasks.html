@@ -14,6 +14,9 @@
        <div class="new_task_priority">
          <input id="new_task_priority" type="number" ng-model="new_task.priority" placeholder="Priority" required>
        </div>
+       <div class="new_task_moment_due">
+         <input id="new_task_moment_due" type="datetime-local" ng-model="new_task.momentDue" placeholder="Due Date" data-date-inline-picker="false" data-date-open-on-focus="true" required>
+       </div>
        <div ng-cloak class="status-message">{{addTaskMessage}}</div>
        <div class="commit">
          <button type="submit" class="button"><span class="glyphicon glyphicon-plus"></span></button>
@@ -34,6 +37,7 @@
         <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
         <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
         <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
+     <p class="task_momentDue" editable-datetime="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amCalendar }}</p>
        <!-- <div ng-cloak class="bg-danger status-message">{{modifyTaskMessage}}</div> commented out because currently we redirect instead of display message : uncomment if we add error message with login redirect -->
         <div class="commit">
           <button type="button" ng-click="nextStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -53,6 +57,7 @@
      <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
+     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amCalendar }}</p>
      <!-- <div ng-cloak class="bg-danger status-message">{{modifyTaskMessage}}</div> -->
       <div class="commit">
         <button type="button" ng-click="prevStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-left"></span></button>
@@ -73,6 +78,7 @@
      <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
      <p class="task_assignedTo" editable-text="task.assignedTo" onbeforesave="editTask(task)">{{task.assignedTo}}</p>
+     <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amCalendar }}</p>
       <!-- <div ng-cloak class="bg-danger status-message">{{modifyTaskMessage}}</div> -->
       <div class="commit">
         <button type="button" ng-click="prevStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-left"></button>

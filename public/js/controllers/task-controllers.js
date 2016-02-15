@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('TaskController', ['$scope', '$location', 'TaskService', function ($scope, $location, TaskService) {
+  .controller('TaskController', ['$scope', '$location', 'TaskService', 'moment', function ($scope, $location, TaskService, moment) {
 
     TaskService.getTasks()
       .then(function successCallback(response) {
@@ -84,6 +84,10 @@ angular.module('app')
 
     $scope.deleteAddTaskMessage = function(){
       $scope.addTaskMessage = null;
+    };
+
+    $scope.formatDate = function(date) {
+      return moment(date).format('MM/dd/yyyy');
     };
 
     }]);

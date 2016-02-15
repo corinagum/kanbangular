@@ -1,15 +1,17 @@
-var express       = require('express');
-var session       = require('express-session');
-var app           = express();
-var bodyParser    = require('body-parser');
-var db            = require('./models');
-var User          = db.User;
-var Task          = db.Task;
-var bcrypt        = require('bcrypt');
+var express             = require('express');
+var session             = require('express-session');
+var app                 = express();
+var bodyParser          = require('body-parser');
+var db                  = require('./models');
+var User                = db.User;
+var Task                = db.Task;
+var bcrypt              = require('bcrypt');
+var moment              = require('moment');
 var middlewareValidator = require('./lib/middleware-validator.js');
 var addTaskKeyValidator = middlewareValidator(['title', 'priority', 'description', 'assignedTo'], 'task');
 var registerKeyValidator = middlewareValidator(['username', 'password', 'email', 'firstName', 'lastName'], 'register');
-var loginKeyValidator = middlewareValidator(['username', 'password'], 'auth');
+var loginKeyValidator   = middlewareValidator(['username', 'password'], 'auth');
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
@@ -169,7 +171,9 @@ app.post('/api', validateUser, addTaskKeyValidator, function(req, res) {
     description : req.body.task.description,
     assignedTo : req.body.task.assignedTo,
     createdBy : req.session.user.firstName,
-    UserId : req.session.user.id
+    UserId : req.session.user.id,
+    momentCreated : moment().format(),
+    momentDue : req.body.task.momentDue
   })
   .then(function(task) {
     Task.findAll()
@@ -180,12 +184,17 @@ app.post('/api', validateUser, addTaskKeyValidator, function(req, res) {
 });
 
 app.put('/api', validateUser, function(req, res) {
+  var momentFinished = null;
+  if(req.body.task.status === "Done") {
+    momentFinished = moment().format();
+  }
   Task.update({
     title : req.body.task.title,
     description : req.body.task.description,
     priority : req.body.task.priority,
     status : req.body.task.status,
-    assignedTo : req.body.task.assignedTo
+    assignedTo : req.body.task.assignedTo,
+    momentFinished : momentFinished
   }, {
     where : {
       id : req.body.task.id
