@@ -2,6 +2,8 @@
 =====================
 ### [kanbangular.herokuapp.com](kanbangular.herokuapp.com)
 
+![screen shot 2016-03-09 at 2 02 17 pm](https://cloud.githubusercontent.com/assets/14900841/13654954/e897ef36-e5ff-11e5-860a-69124602da55.png)
+
 > "The Kanban technique emerged in the late 1940s as Toyota’s reimagined approach to manufacturing and engineering. ... The system’s highly visual nature allowed teams to communicate more easily on what work needed to be done and when. It also standardized cues and refined processes, which helped to reduce waste and maximize value." - [via LeanKit.com](http://leankit.com/learn/kanban/kanban-board/)
 
 ## Introduction
