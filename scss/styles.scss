@@ -43,7 +43,7 @@
   body {
   margin : 0;
   background-color : $white;
-  font-family: sans-serif;
+  font-family: Verdana, sans-serif;
   }
 
   h1 {
@@ -56,6 +56,7 @@
   line-height: 1em;
   font-weight: 700;
   font-size: 3em;
+  font-family: Helvetica, sans-serif;
   }
 
   h2 {
@@ -74,6 +75,8 @@
   -moz-box-shadow: inset 0 7px 9px -4px rgba(0,0,0,0.4);
   box-shadow: inset 0 7px 9px -4px rgba(0,0,0,0.4);
   height : 3em;
+  font-weight: 400;
+
   ul {
     list-style : none;
     display : -webkit-flex;
@@ -86,13 +89,18 @@
       text-align : center;
       flex : 1 0 20;
       line-height: 3em;
-      text-transform: uppercase;
+      text-transform: capitalize;
       text-decoration: none;
       color: #555555;
 
 
       a {
         color: #555555;
+      }
+
+      a:hover {
+        color : $goldfish-color;
+        text-decoration: none;
       }
     }
   }
@@ -137,15 +145,20 @@
     margin : auto;
     margin-top : 20px;
     text-align: center;
-
-    button {
-      height : 1.5em;
-      line-height : 1.5em;
-      vertical-align: middle;
-      text-align: center;
-    }
   }
 
+  button {
+    height : 2em;
+    line-height : 2em;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+    background-color: green;
+    padding-bottom: 3px;
+  }
+  .glyphicon {
+    line-height : 2em;
+  }
 .tasks {
   padding-left: 0;
   margin : 0 auto;
@@ -155,9 +168,8 @@
   background-color: $white;
   margin : 0 auto;
   margin-top : 20px;
-  border: 3px solid $bright-orange-color;
+  border: 1px solid #cccccc;
   padding : 20px;
-  padding-left : 30px;
   overflow: hidden;
   @media #{$large} {
     width : 30vw;
@@ -168,9 +180,9 @@
     overflow: hidden;
   }
 
-  -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
   .priority-and-creator-holder {
     display : -webkit-flex;
            -webkit-flex-direction : row;
@@ -180,7 +192,8 @@
   }
   .task_title{
 
-    padding: 10px 0;
+    padding: 8px;
+    padding-bottom: 0px;
     border-bottom: 2px solid red;
     text-transform: capitalize;
     overflow: hidden;
@@ -205,17 +218,6 @@
     overflow: hidden;
   }
 
-}
-div.task-card:hover {
-  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-}
-
-li.task-card:hover {
-  -webkit-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 14px -1px rgba(0,0,0,0.75);
 }
 
 .auth {
@@ -257,7 +259,10 @@ li.task-card:hover {
 }
 
   input {
-    margin : 5px 0;
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #808080;
     width: 100%;
   }
 
@@ -287,4 +292,13 @@ li.task-card:hover {
   @media #{$large} {
    visibility: visible;
   }
+}
+
+#new_task_title {
+  border:none;
+}
+
+label {
+  padding-top: 1em;
+  font-weight: 500;
 }

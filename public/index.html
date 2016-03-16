@@ -13,11 +13,11 @@
   <h1 ng-cloak>{{ "Kanbangular" }}</h1>
   <div id="nav">
     <ul>
-      <li><a ng-href='/' ng-click='deleteMessage()'>Home</a></li>
+      <li ng-hide="isLoggedIn()"><a ng-href='/' ng-click='deleteMessage()'>Home</a></li>
       <li ng-hide="isLoggedIn()"><a ng-href='/login' ng-click='deleteMessage()'>Log In</a></li>
       <li ng-hide="isLoggedIn()"><a ng-href='/register' ng-click='deleteMessage()'>Register</a></li>
       <li ng-show="isLoggedIn()"><a ng-href='/logout' ng-click='logout(); deleteMessage()'>Log Out</a></li>
-      <li id="loggedIn" ng-cloak>{{loggedIn}}</li>
+      <li ng-hide="!isLoggedIn()" id="loggedIn" ng-cloak>{{loggedIn}}</li>
     </ul>
   </div>
     <div class="status-message">
