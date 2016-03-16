@@ -153,11 +153,31 @@
     vertical-align: middle;
     text-align: center;
     border: none;
-    background-color: green;
-    padding-bottom: 3px;
+    background-color: $neutral-blue-color;
+    webkit-transition: box-shadow 0.75s;
+    transition: box-shadow 0.75s;
+    webkit-transition: background-color 0.75s;
+    transition: background-color 0.75s;
+    webkit-transition: color 0.75s;
+    transition: color 0.75s;
+    width: 50px;
+
+  }
+  button:hover{
+    -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+    -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+    box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+    webkit-transition: box-shadow 0.75s;
+    transition: box-shadow 0.75s;
+    webkit-transition: background-color 0.75s;
+    transition: background-color 0.75s;
+    webkit-transition: color 0.75s;
+    transition: color 0.75s;
+    color: $white;
+    background-color: $bright-blue-color;
   }
   .glyphicon {
-    line-height : 2em;
+    line-height : 1.7em;
   }
 .tasks {
   padding-left: 0;
@@ -300,5 +320,4 @@
 
 label {
   padding-top: 1em;
-  font-weight: 500;
 }
