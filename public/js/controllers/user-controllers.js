@@ -17,7 +17,7 @@ angular.module('app')
     UserService.authStatus()
       .then(function(response){
         if(response.data.success){
-          $scope.loggedIn = "Hi " + response.data.username;
+          $scope.loggedIn = "Hi " + response.data.username + "!";
         } else {
           $scope.loggedIn = "Not logged in";
         }
@@ -28,7 +28,7 @@ angular.module('app')
         .then(function(response) {
           if(response.data.success) {
             $scope.firstName = response.data.firstName;
-            $scope.loggedIn = "Hi " + response.data.username;
+            $scope.loggedIn = "Hi " + response.data.username + "!";
             $location.path('/');
           }
           if(response.data.hasOwnProperty('message')){
@@ -45,7 +45,7 @@ angular.module('app')
           } else {
             $scope.registerMessage = response.data.message;
             $scope.firstName = response.data.firstName;
-            $scope.loggedIn = "Hi " + response.data.username;
+            $scope.loggedIn = "Hi " + response.data.username + "!";
             $location.path('/');
           }
         });
