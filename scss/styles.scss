@@ -57,13 +57,16 @@
   font-weight: 700;
   font-size: 3em;
   font-family: Helvetica, sans-serif;
+  -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
   }
 
   h2 {
-    margin-top : 20px;
+    margin-top : 1.5em;
     text-align: center;
     color : #555;
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: bold;
   }
 
@@ -71,9 +74,9 @@
 
 #nav {
   background-color: $neutral-blue-color;
-  -webkit-box-shadow: inset 0 7px 9px -4px rgba(0,0,0,0.4);
-  -moz-box-shadow: inset 0 7px 9px -4px rgba(0,0,0,0.4);
-  box-shadow: inset 0 7px 9px -4px rgba(0,0,0,0.4);
+  -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
   height : 3em;
   font-weight: 400;
 
@@ -148,8 +151,8 @@
   }
 
   button {
-    height : 2em;
-    line-height : 2em;
+    min-height : 2em;
+    line-height : 1.7em;
     vertical-align: middle;
     text-align: center;
     border: none;
@@ -160,7 +163,7 @@
     transition: background-color 0.75s;
     webkit-transition: color 0.75s;
     transition: color 0.75s;
-    width: 50px;
+    padding: 0.5em 1em;
 
   }
   button:hover{
@@ -176,9 +179,7 @@
     color: $white;
     background-color: $bright-blue-color;
   }
-  .glyphicon {
-    line-height : 1.7em;
-  }
+
 .tasks {
   padding-left: 0;
   margin : 0 auto;
@@ -189,7 +190,7 @@
   margin : 0 auto;
   margin-top : 20px;
   border: 1px solid #cccccc;
-  padding : 20px;
+  padding : 1.5em;
   overflow: hidden;
   @media #{$large} {
     width : 30vw;
@@ -198,6 +199,8 @@
     height : 2em;
     line-height : 2em;
     overflow: hidden;
+    margin-top: .75em;
+
   }
 
   -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
@@ -211,12 +214,16 @@
         justify-content : space-between;
   }
   .task_title{
-
-    padding: 8px;
+    padding: 0.5em 0;
+    font-size: 1.25em;
     padding-bottom: 0px;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid $goldfish-color;
     text-transform: capitalize;
     overflow: hidden;
+  }
+  .task_title:hover{
+    border-bottom: 2px solid $goldfish-color;
+
   }
   .task_creator {
     display: flex;
@@ -269,6 +276,37 @@
   vertical-align: middle;
 }
 .btn {
+  margin-top:0.75em;
+  line-height: 1em;
+  vertical-align: middle;
+  border-radius: 0px;
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s;
+  webkit-transition: background-color 0.75s;
+  transition: background-color 0.75s;
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  color:#555555;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s;
+  webkit-transition: background-color 0.75s;
+  transition: background-color 0.75s;
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  color: $white;
+  background-color: $bright-blue-color;
+}
+.btn-primary {
+  margin-top: 0.75em;
+  background-color: $neutral-blue-color;
+  border: none;
+  border-radius: none;
   line-height: 1em;
   vertical-align: middle;
 }
@@ -279,13 +317,46 @@
 }
 
   input {
-    padding: 8px;
+    padding: 5px;
     display: block;
     border: none;
     border-bottom: 1px solid #808080;
     width: 100%;
+    font-size: .9em;
   }
 
+
+#new_task_title {
+  border:none;
+}
+
+label {
+  padding-top: 0.75em;
+  font-size: 0.75em;
+}
+
+.form-control {
+  border-radius: 0px;
+  border:none;
+  height : 2em;
+  padding-top:0.75em;
+  }
+
+.editable-click {
+  border-bottom:1px dashed #cccccc;
+  color: $bright-blue-color;
+  height : 2em;
+
+}
+.editable-click:hover {
+  border-bottom:1px solid #cccccc;
+  height : 2em;
+}
+.editable-input{
+  box-shadow: none;
+  margin-top: 0.75em;
+  height:2.5em;
+}
 ////////// ANIMATIONS \\\\\\\\\\\\\
 
 .ng-enter {
@@ -312,12 +383,4 @@
   @media #{$large} {
    visibility: visible;
   }
-}
-
-#new_task_title {
-  border:none;
-}
-
-label {
-  padding-top: 1em;
 }
