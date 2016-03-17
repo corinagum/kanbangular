@@ -138,6 +138,13 @@ app.post('/login', loginKeyValidator, function(req, res) {
   });
 });
 
+app.get('/users', function(req,res){
+  User.findAll()
+    .then(function(users) {
+      res.send(users);
+    });
+});
+
 app.get('/authStatus', function(req, res){
   if(req.session.hasOwnProperty('user')){
     res.send({

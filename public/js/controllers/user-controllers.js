@@ -9,10 +9,15 @@ angular.module('app')
       }
     };
 
+    UserService.getUsers()
+      .then(function successCallback(response) {
+        $scope.users = response.data;
+      });
+
     UserService.authStatus()
       .then(function(response){
         if(response.data.success){
-          $scope.loggedIn = "Hi " + response.data.username, "!";
+          $scope.loggedIn = "Hi " + response.data.username;
         } else {
           $scope.loggedIn = "Not logged in";
         }

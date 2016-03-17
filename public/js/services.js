@@ -63,4 +63,9 @@ angular.module('app')
       return $http.get('/authStatus');
     };
 
+// GET USERS
+    this.getUsers = function() {
+      return $http.get('/users');
+    };
+
   }]);

@@ -12,11 +12,6 @@
   // 0. RESETS & FRAMEWORKS
   @import "partials/reset";
 
-  // * {
-  //   box-sizing: border-box;
-  //   // transition: all 1s ease;
-  // }
-
   // VARIABLES & MIXINS
 
   $white : #ffffff;
@@ -31,22 +26,16 @@
   // MEDIA QUERY RANGES
   $large: "only screen and (min-width:800px)";
 
-  // @media #{$large} {
-  //   // padding: 0;
-  //   // width: 75%;
-  //   border-top: 1px solid #eee;
-  // }
+  // GENERAL STYLES
 
-//   // GENERAL STYLES
-
-
-  body {
+  // TAGS
+body {
   margin : 0;
   background-color : $white;
   font-family: Verdana, sans-serif;
-  }
+}
 
-  h1 {
+h1 {
   margin : 0;
   padding : 0.5em 0;
   background-color: $goldfish-color;
@@ -60,37 +49,79 @@
   -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
-  }
+}
 
-  h2 {
-    margin-top : 1.5em;
-    text-align: center;
-    color : #555;
-    font-size: 1.5em;
-    font-weight: bold;
-  }
+h2 {
+  margin-top : 1.5em;
+  text-align: center;
+  color : #555;
+  font-size: 1.5em;
+  font-weight: bold;
+}
 
+input {
+  padding: 5px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #808080;
+  width: 100%;
+  font-size: .9em;
+}
 
+button {
+  min-height : 2em;
+  line-height : 1.7em;
+  vertical-align: middle;
+  text-align: center;
+  border: none;
+  background-color: $neutral-blue-color;
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s;
+  webkit-transition: background-color 0.75s;
+  transition: background-color 0.75s;
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  padding: 0.5em 1em;
+}
 
+button:hover{
+  background-color: $bright-blue-color;
+  color: $white;
+  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s;
+  webkit-transition: background-color 0.75s;
+  transition: background-color 0.75s;
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+}
+
+label {
+  padding-top: 0.75em;
+  font-size: 0.75em;
+} //tags
+
+  //ID'S
 #nav {
   background-color: $neutral-blue-color;
+  height : 3em;
   -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
-  height : 3em;
-  font-weight: 400;
 
   ul {
     list-style : none;
+    flex-flow : row wrap;
     display : -webkit-flex;
        -webkit-flex-direction : row;
     display : flex;
-    flex-flow : row wrap;
     justify-content : space-around;
 
     li {
-      text-align : center;
       flex : 1 0 20;
+      text-align : center;
       line-height: 3em;
       text-transform: capitalize;
       text-decoration: none;
@@ -108,15 +139,17 @@
     }
   }
 }
+
 #loggedIn {
   flex : 1 0 20;
   align-self : flex-end;
 }
 
-.status-message {
-  margin: 10px;
-  // padding-top: 10px;
-  text-align : center;
+#assign-priority-container{
+  margin: 0.5em 0;
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: left;
 }
 
 #kanban {
@@ -126,7 +159,6 @@
       list-style : none;
     }
   }
-
   @media #{$large} {
     display : -webkit-flex;
        -webkit-flex-direction : row;
@@ -143,138 +175,25 @@
   }
 }
 
-
-  .commit {
-    margin : auto;
-    margin-top : 20px;
-    text-align: center;
-  }
-
-  button {
-    min-height : 2em;
-    line-height : 1.7em;
-    vertical-align: middle;
-    text-align: center;
-    border: none;
-    background-color: $neutral-blue-color;
-    webkit-transition: box-shadow 0.75s;
-    transition: box-shadow 0.75s;
-    webkit-transition: background-color 0.75s;
-    transition: background-color 0.75s;
-    webkit-transition: color 0.75s;
-    transition: color 0.75s;
-    padding: 0.5em 1em;
-
-  }
-  button:hover{
-    -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
-    -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
-    box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
-    webkit-transition: box-shadow 0.75s;
-    transition: box-shadow 0.75s;
-    webkit-transition: background-color 0.75s;
-    transition: background-color 0.75s;
-    webkit-transition: color 0.75s;
-    transition: color 0.75s;
-    color: $white;
-    background-color: $bright-blue-color;
-  }
-
-.tasks {
-  padding-left: 0;
-  margin : 0 auto;
+#new_task_title {
+  border:none;
 }
-
-.task-card {
-  background-color: $white;
-  margin : 0 auto;
-  margin-top : 20px;
-  border: 1px solid #cccccc;
-  padding : 1.5em;
-  overflow: hidden;
-  @media #{$large} {
-    width : 30vw;
-  }
-  p {
-    height : 2em;
-    line-height : 2em;
-    overflow: hidden;
-    margin-top: .75em;
-
-  }
-
-  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
-  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
-  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
-  .priority-and-creator-holder {
-    display : -webkit-flex;
-           -webkit-flex-direction : row;
-        display : flex;
-        flex-flow : row nowrap;
-        justify-content : space-between;
-  }
-  .task_title{
-    padding: 0.5em 0;
-    font-size: 1.25em;
-    padding-bottom: 0px;
-    border-bottom: 2px solid $goldfish-color;
-    text-transform: capitalize;
-    overflow: hidden;
-  }
-  .task_title:hover{
-    border-bottom: 2px solid $goldfish-color;
-
-  }
-  .task_creator {
-    display: flex;
-    text-align : right;
-    font-style: italic;
-    overflow: hidden;
-  }
-  .task_description{
-    height: 1000px;
-  }
-
-  .task_priority{
-    display: flex;
-    max-width: 2em;
-  }
-
-  .editable {
-    max-height: 2em;
-    overflow: hidden;
-  }
-
-}
-
-.auth {
-  background-color: $white;
-  margin : 0 auto;
-  margin-top : 20px;
-  border: 3px solid $bright-blue-color;
-  padding : 20px;
-  padding-left : 30px;
-  @media #{$large} {
-    max-width : 33vw;
-  }
-
-  p {
-    height : 2em;
-    line-height : 2em;
-  }
-
-  -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
-}
-
 #footer {
   min-height : 50px;
+}//id's
+
+  //CLASSES
+.commit {
+  margin : auto;
+  margin-top : 20px;
+  text-align: center;
 }
 
-.editable-buttons {
-  vertical-align: middle;
+.status-message {
+  margin: 10px;
+  text-align : center;
 }
+
 .btn {
   margin-top:0.75em;
   line-height: 1em;
@@ -311,53 +230,124 @@
   vertical-align: middle;
 }
 
-.temp-archive{
-  margin-right : 30px;
-  text-align: right;
+.tasks {
+  padding-left: 0;
+  margin : 0 auto;
 }
 
-  input {
-    padding: 5px;
-    display: block;
-    border: none;
-    border-bottom: 1px solid #808080;
-    width: 100%;
-    font-size: .9em;
+.task-card {
+  background-color: $white;
+  margin : 0 auto;
+  margin-top : 20px;
+  border: 1px solid #cccccc;
+  padding : 1.5em;
+  overflow: hidden;
+  @media #{$large} {
+    width : 30vw;
+  }
+  p {
+    height : 2em;
+    line-height : 2em;
+    overflow: hidden;
+    margin-top: .75em;
+  }
+  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  .priority-and-creator-holder {
+    display : -webkit-flex;
+           -webkit-flex-direction : row;
+        display : flex;
+        flex-flow : row nowrap;
+        justify-content : space-between;
+}
+  .task_title{
+    padding: 0.5em 0;
+    font-size: 1.25em;
+    padding-bottom: 0px;
+    border-bottom: 2px solid $goldfish-color;
+    text-transform: capitalize;
+    overflow: hidden;
+  }
+  .task_title:hover{
+    border-bottom: 2px solid $goldfish-color;
+
+  }
+  .task_creator {
+    display: flex;
+    text-align : right;
+    font-style: italic;
+    overflow: hidden;
+  }
+  .task_description{
+    height: 1000px;
   }
 
-
-#new_task_title {
-  border:none;
-}
-
-label {
-  padding-top: 0.75em;
-  font-size: 0.75em;
-}
-
-.form-control {
-  border-radius: 0px;
-  border:none;
-  height : 2em;
-  padding-top:0.75em;
+  .task_priority{
+    display: flex;
+    max-width: 2em;
   }
 
-.editable-click {
-  border-bottom:1px dashed #cccccc;
-  color: $bright-blue-color;
-  height : 2em;
+  .editable {
+    max-height: 2em;
+    overflow: hidden;
+  }
+}
 
+.auth {
+  background-color: $white;
+  margin : 0 auto;
+  margin-top : 20px;
+  border: 3px solid $bright-blue-color;
+  padding : 20px;
+  padding-left : 30px;
+  @media #{$large} {
+    max-width : 33vw;
+  }
+
+  p {
+    height : 2em;
+    line-height : 2em;
+  }
+  -webkit-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 14px -4px rgba(0,0,0,0.75);
 }
-.editable-click:hover {
-  border-bottom:1px solid #cccccc;
-  height : 2em;
-}
-.editable-input{
-  box-shadow: none;
-  margin-top: 0.75em;
-  height:2.5em;
-}
-////////// ANIMATIONS \\\\\\\\\\\\\
+
+  .temp-archive{
+    margin-right : 30px;
+    text-align: right;
+  }
+
+  .form-control {
+    border-radius: 0px;
+    border:none;
+    height : 2em;
+    padding-top:0.75em;
+    }
+
+  .editable-buttons {
+    vertical-align: middle;
+  }
+
+  .editable-click {
+    border-bottom:1px dashed #cccccc;
+    color: $bright-blue-color;
+    height : 2em;
+  }
+
+  .editable-click:hover {
+    border-bottom:1px solid #cccccc;
+    height : 2em;
+  }
+
+  .editable-input{
+    box-shadow: none;
+    margin-top: 0.75em;
+    height:2.5em;
+  }
+
+  ////////// ANIMATIONS \\\\\\\\\\\\\
 
 .ng-enter {
   transition-delay: 0.25s;
