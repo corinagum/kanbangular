@@ -176,7 +176,7 @@ app.post('/api', validateUser, addTaskKeyValidator, function(req, res) {
     priority: req.body.task.priority,
     status : "To Do",
     description : req.body.task.description,
-    assignedTo : req.body.task.assignedTo,
+    assignedTo : req.body.task.assignedTo.username,
     createdBy : req.session.user.firstName,
     UserId : req.session.user.id,
     momentCreated : moment().format(),
@@ -200,7 +200,7 @@ app.put('/api', validateUser, function(req, res) {
     description : req.body.task.description,
     priority : req.body.task.priority,
     status : req.body.task.status,
-    assignedTo : req.body.task.assignedTo,
+    assignedTo : req.body.task.assignedTo.username,
     momentFinished : momentFinished
   }, {
     where : {
