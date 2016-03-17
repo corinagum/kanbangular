@@ -32,23 +32,20 @@
 body {
   margin : 0;
   background-color : $white;
-  font-family: Verdana, sans-serif;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 h1 {
   margin : 0;
-  padding : 0.5em 0;
-  background-color: $goldfish-color;
-  color: $neutral-color;
+  padding : 0.25em 3vw;
+  color: $goldfish-color;
   text-transform: uppercase;
-  text-align: center;
-  line-height: 1em;
+  line-height: 1.5em;
   font-weight: 700;
-  font-size: 3em;
-  font-family: Helvetica, sans-serif;
-  -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
-  -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
-  box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
+  font-size: 1.5em;
+  // -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  // -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  // box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
 }
 
 h2 {
@@ -64,24 +61,58 @@ input {
   display: block;
   border: none;
   border-bottom: 1px solid #808080;
-  width: 100%;
+  width: auto;
   font-size: .9em;
+  webkit-transition: border .2s ease-out;
+  transition: border .2s ease-out;
+}
+
+input:focus{
+  outline:0;
+  border-bottom: 2px solid $bright-blue-color;
+  webkit-transition: border .2s ease;
+  transition: border .2s ease;
+
+}
+
+input:active{
+  border-bottom: 2px solid $bright-blue-color;
+}
+
+select {
+  margin-right: 1em;
+  background-color: rgba(255, 255, 255, 0.90);
+   width: 100%;
+   padding: 5px;
+   border: 1px solid #f2f2f2;
+   border-radius: 2px;
+   height: 2rem;
+}
+select:focus {
+  outline: 1px solid $neutral-color;
 }
 
 button {
+  margin-top:1em;
+  border-radius: 1px;
   min-height : 2em;
   line-height : 1.7em;
   vertical-align: middle;
   text-align: center;
   border: none;
   background-color: $neutral-blue-color;
-  webkit-transition: box-shadow 0.75s;
-  transition: box-shadow 0.75s;
-  webkit-transition: background-color 0.75s;
-  transition: background-color 0.75s;
-  webkit-transition: color 0.75s;
-  transition: color 0.75s;
+
+  webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  webkit-transition: color 0.2s;
+  transition: color 0.2s;
   padding: 0.5em 1em;
+}
+
+button:focus {
+  outline: none;
 }
 
 button:hover{
@@ -90,51 +121,81 @@ button:hover{
   -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
   -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
   box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
-  webkit-transition: box-shadow 0.75s;
-  transition: box-shadow 0.75s;
-  webkit-transition: background-color 0.75s;
-  transition: background-color 0.75s;
-  webkit-transition: color 0.75s;
-  transition: color 0.75s;
+  webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+button.trash {
+  height:1.5em;
+  color: #cccccc;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  line-height : 1.5em;
+  overflow: hidden;
+  margin-top: .75em;
+}
+
+button.trash:hover {
+  color: #808080;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+  webkit-transition: color 0.2s;
+  transition: color 0.2s;
 }
 
 label {
   padding-top: 0.75em;
   font-size: 0.75em;
-} //tags
+}
+
+label:active {
+  color: $neutral-blue-color;
+}//tags
 
   //ID'S
 #nav {
-  background-color: $neutral-blue-color;
+  background-color: #808080;
   height : 3em;
+
+  display : -webkit-flex;
+     -webkit-flex-direction : row;
+  display : flex;
+  justify-content : space-between;
+
   -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
 
-  ul {
-    list-style : none;
-    flex-flow : row wrap;
-    display : -webkit-flex;
-       -webkit-flex-direction : row;
-    display : flex;
-    justify-content : space-around;
+  .navLinks-container {
+    ul {
+      list-style : none;
+      flex-flow : row wrap;
+      display : -webkit-flex;
+         -webkit-flex-direction : row;
+      display : flex;
+      justify-content : space-around;
 
-    li {
-      flex : 1 0 20;
-      text-align : center;
-      line-height: 3em;
-      text-transform: capitalize;
-      text-decoration: none;
-      color: #555555;
-
-
-      a {
-        color: #555555;
-      }
-
-      a:hover {
-        color : $goldfish-color;
+      li {
+        flex : 1 0 20;
+        text-align : center;
+        line-height: 3em;
+        text-transform: capitalize;
         text-decoration: none;
+        color: $neutral-color;
+        padding: 0 3vw;
+        a {
+          color: $neutral-color;
+        }
+
+        a:hover {
+          color : $goldfish-color;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -144,12 +205,10 @@ label {
   flex : 1 0 20;
   align-self : flex-end;
 }
-
-#assign-priority-container{
-  margin: 0.5em 0;
-  display:flex;
-  flex-flow: row nowrap;
-  justify-content: left;
+.loggedIn-message {
+  padding-top: 1em;
+  padding-left: 3vw;
+  font-size: 1em;
 }
 
 #kanban {
@@ -174,23 +233,45 @@ label {
     }
   }
 }
+.new-task {
+  margin:0;
 
-#new_task_title {
-  border:none;
+  fieldset{
+    display : -webkit-flex;
+       -webkit-flex-direction : row;
+    display : flex;
+    flex-flow : column wrap;
+    justify-content : center;
+    #fieldset-container{
+      margin: 1em 0;
+      display:flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+    }
+    padding-bottom: 2em;
+    -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+    box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
+  }
+
 }
+// #new_task_title {
+//   border-bottom:2px solid $goldfish-color;
+
+// }
+
 #footer {
   min-height : 50px;
 }//id's
 
   //CLASSES
 .commit {
-  margin : auto;
-  margin-top : 20px;
+  margin : 0;
   text-align: center;
 }
 
 .status-message {
-  margin: 10px;
+  padding: 1em;
   text-align : center;
 }
 
@@ -221,6 +302,9 @@ label {
   color: $white;
   background-color: $bright-blue-color;
 }
+.btn:focus {
+  outline: none;
+}
 .btn-primary {
   margin-top: 0.75em;
   background-color: $neutral-blue-color;
@@ -229,6 +313,8 @@ label {
   line-height: 1em;
   vertical-align: middle;
 }
+
+
 
 .tasks {
   padding-left: 0;
@@ -239,7 +325,7 @@ label {
   background-color: $white;
   margin : 0 auto;
   margin-top : 20px;
-  border: 1px solid #cccccc;
+  border: 1px solid #fafafa;
   padding : 1.5em;
   overflow: hidden;
   @media #{$large} {
@@ -344,6 +430,7 @@ label {
   .editable-input{
     box-shadow: none;
     margin-top: 0.75em;
+    outline:0;
     height:2.5em;
   }
 

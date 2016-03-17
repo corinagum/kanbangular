@@ -1,43 +1,43 @@
-  <h2>New Task</h2>
-<div class="task-card">
+  <!-- <h2>New Task</h2> -->
+<div ng-hide="!isLoggedIn()" id="loggedIn" class="new-task">
     <form ng-submit="addTask(new_task); deleteMessage(); deleteAddTaskMessage(); new_task=null">
+      <div ng-cloak class="loggedIn-message">{{loggedIn}} Use this form to add a task. &nbsp;&nbsp;&nbsp; {{message}} {{addTaskMessage}}</div>
       <fieldset>
-       <div class="new_task_title task_title">
-        <label>Title</label>
-         <input id="new_task_title" id="input-group" type="text" ng-model="new_task.title" autofocus required>
-       </div>
-       <div class="new_task_description">
-        <label>Details</label>
-        <input id="new_task_description" type="text" ng-model="new_task.description" required>
-       </div>
-       <div id="assign-priority-container">
-         <div class="new_task_assignedTo">
-          <label>Assign To</label>
-          <select ng-options="user.username for user in users" id="new_task_assignedTo" type="text" ng-model="new_task.assignedTo" required>{{user.username}}</select>
+       <div id="fieldset-container">
+         <div class="new_task_title task_title">
+          <label>Title</label>
+           <input id="new_task_title" id="input-group" type="text" ng-model="new_task.title" autofocus required>
          </div>
-         <div class="new_task_priority">
-          <label>Priority</label>
-           <select id="new_task_priority" type="number" ng-model="new_task.priority" required>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-          </select>
+         <div class="new_task_description">
+          <label>Details</label>
+          <input id="new_task_description" type="text" ng-model="new_task.description" required>
          </div>
-       </div>
-       <div class="new_task_moment_due">
-        <label>Due Date</label>
-         <input id="new_task_moment_due" type="date" ng-model="new_task.momentDue" data-date-inline-picker="false" data-date-open-on-focus="true" required>
-       </div>
-       <div ng-cloak class="status-message">{{addTaskMessage}}</div>
-       <div class="commit">
-         <button type="submit" class="button"><span class="glyphicon glyphicon-plus"></span></button>
+           <div class="new_task_assignedTo">
+            <label>Assign To</label>
+            <select ng-options="user.username for user in users" id="new_task_assignedTo" type="text" ng-model="new_task.assignedTo" required>{{user.username}}</select>
+           </div>
+           <div class="new_task_priority">
+            <label>Priority</label>
+             <select id="new_task_priority" type="number" ng-model="new_task.priority" required>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+           </div>
+         <div class="new_task_moment_due">
+          <label>Due Date</label>
+           <input id="new_task_moment_due" type="date" ng-model="new_task.momentDue" data-date-inline-picker="false" data-date-open-on-focus="true" required>
+         </div>
+         <div class="commit">
+           <button type="submit" class="button"><span class="glyphicon glyphicon-plus"></span></button>
+         </div>
        </div>
       </fieldset>
     </form>
@@ -50,7 +50,7 @@
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'-priority'">
         <div class="priority-and-creator-holder">
           <p id="to-do-task-card" class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
-          <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
+          <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p> <button ng-hide="!isLoggedIn()" class="trash" type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
         </div>
         <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
         <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
@@ -58,7 +58,6 @@
      <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amDateFormat: 'dddd, MMMM Do YYYY' }}</p>
         <div class="commit">
           <button type="button" ng-click="nextStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-right"></span></button>
-          <button type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
         </div>
        </li>
     </ul>
@@ -69,7 +68,7 @@
     <li id="in-progress-task-card" class="task-card" ng-repeat="task in tasks | filter:{status:'In Progress'} | orderBy:'-priority'">
      <div class="priority-and-creator-holder">
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
-       <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
+       <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p> <button ng-hide="!isLoggedIn()" class="trash" type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
      </div>
      <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
@@ -78,7 +77,6 @@
       <div class="commit">
         <button type="button" ng-click="prevStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-left"></span></button>
         <button type="button" ng-click="nextStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-right"></span></button>
-        <button type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
      </li>
     </ul>
@@ -89,7 +87,7 @@
     <li id="done-task-card" class="task-card" ng-repeat="task in tasks | filter:{status:'Done'} | orderBy:'-priority'">
      <div class="priority-and-creator-holder">
        <p class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
-       <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p>
+       <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p> <button ng-hide="!isLoggedIn()" class="trash" type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
      </div>
      <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>
      <p class="task_description" editable-text="task.description" onbeforesave="editTask(task)">{{task.description}}</p>
@@ -97,7 +95,6 @@
      <p class="task_momentDue" editable-date="task.momentDue" onbeforesave="editTask(task)" data-date-inline-picker="false" data-date-open-on-focus="true" >Due {{task.momentDue | amDateFormat: 'dddd, MMMM Do YYYY' }}</p>
       <div class="commit">
         <button type="button" ng-click="prevStatus(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-chevron-left"></button>
-        <button type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
      </li>
     </ul>
