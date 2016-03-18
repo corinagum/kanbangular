@@ -105,7 +105,7 @@ button {
   vertical-align: middle;
   text-align: center;
   border: none;
-  background-color: #A7DBD8;
+  background-color: transparent;
   webkit-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
   webkit-transition: background-color 0.2s;
@@ -319,7 +319,8 @@ label:active {
     display: flex;
     text-align: right;
     font-style: italic;
-    overflow: hidden; }
+    overflow: hidden;
+    color: #808080; }
   .task-card .task_description {
     height: 1000px; }
   .task-card .task_priority {
@@ -373,7 +374,7 @@ label:active {
   box-shadow: none;
   margin-top: 0.75em;
   outline: 0;
-  height: 2.5em; }
+  height: 2.4em; }
 
 .ng-enter {
   transition-delay: 0.25s;

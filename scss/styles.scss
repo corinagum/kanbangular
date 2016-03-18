@@ -100,7 +100,7 @@ button {
   vertical-align: middle;
   text-align: center;
   border: none;
-  background-color: $neutral-blue-color;
+  background-color: transparent;
 
   webkit-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
@@ -365,6 +365,7 @@ label:active {
     text-align : right;
     font-style: italic;
     overflow: hidden;
+    color: #808080;
   }
   .task_description{
     height: 1000px;
@@ -433,7 +434,7 @@ label:active {
     box-shadow: none;
     margin-top: 0.75em;
     outline:0;
-    height:2.5em;
+    height:2.4em;
   }
 
   ////////// ANIMATIONS \\\\\\\\\\\\\
