@@ -49,7 +49,7 @@
     <ul class="tasks" ng-show="mobileToggleToDo">
       <li class="task-card" ng-repeat="task in tasks | filter:{status:'To Do'} | orderBy:'-priority'">
         <div class="priority-and-creator-holder">
-          <p id="to-do-task-card" class="task_priority" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
+          <p id="to-do-task-card" class="task_priority" ng-click="form.$cancel()" editable-text="task.priority" onbeforesave="editTask(task)">{{task.priority}}</p>
           <p class="task_creator" onbeforesave="editTask(task)">from {{task.createdBy}}</p> <button ng-hide="!isLoggedIn()" class="trash" type="button" ng-click="deleteTask(task); deleteMessage(); deleteAddTaskMessage();"><span class="glyphicon glyphicon-trash"></span></button>
         </div>
         <h4 class="task_title" editable-text="task.title" onbeforesave="editTask(task)">{{task.title}}</h4>

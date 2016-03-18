@@ -182,7 +182,7 @@ label:active {
       #nav .navLinks-container ul li a {
         color: #E0E4CC; }
       #nav .navLinks-container ul li a:hover {
-        color: #F38630;
+        color: #69D2E7;
         text-decoration: none; }
 
 #loggedIn {
@@ -192,7 +192,8 @@ label:active {
 .loggedIn-message {
   padding-top: 1em;
   padding-left: 3vw;
-  font-size: 1em; }
+  font-size: 1em;
+  color: #69D2E7; }
 
 #kanban {
   margin: 5px; }
@@ -360,12 +361,13 @@ label:active {
 
 .editable-click {
   border-bottom: 1px dashed #cccccc;
-  color: #69D2E7;
+  color: #808080;
   height: 2em; }
 
 .editable-click:hover {
   border-bottom: 1px solid #cccccc;
-  height: 2em; }
+  height: 2em;
+  color: #69D2E7; }
 
 .editable-input {
   box-shadow: none;

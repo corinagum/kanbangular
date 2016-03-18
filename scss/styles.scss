@@ -193,7 +193,7 @@ label:active {
         }
 
         a:hover {
-          color : $goldfish-color;
+          color : $bright-blue-color;
           text-decoration: none;
         }
       }
@@ -209,6 +209,7 @@ label:active {
   padding-top: 1em;
   padding-left: 3vw;
   font-size: 1em;
+  color: $bright-blue-color;
 }
 
 #kanban {
@@ -418,13 +419,14 @@ label:active {
 
   .editable-click {
     border-bottom:1px dashed #cccccc;
-    color: $bright-blue-color;
+    color: #808080;
     height : 2em;
   }
 
   .editable-click:hover {
     border-bottom:1px solid #cccccc;
     height : 2em;
+    color: $bright-blue-color;
   }
 
   .editable-input{
