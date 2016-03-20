@@ -25,6 +25,7 @@
 
   // MEDIA QUERY RANGES
   $large: "only screen and (min-width:800px)";
+  $mobile: "only screen and (max-width:800px)";
 
   // GENERAL STYLES
 
@@ -49,11 +50,10 @@ h1 {
 }
 
 h2 {
-  margin-top : 1.5em;
+  margin-top : 1.3em;
   text-align: center;
-  color : #555;
-  font-size: 1.5em;
-  font-weight: bold;
+  color : #999;
+  font-size: 1.3em;
 }
 
 input {
@@ -65,6 +65,9 @@ input {
   font-size: .9em;
   webkit-transition: border .2s ease-out;
   transition: border .2s ease-out;
+  @media #{$mobile} {
+    padding: 0;
+  }
 }
 
 input:focus{
@@ -163,14 +166,28 @@ label:active {
   height : 3em;
 
   display : -webkit-flex;
-     -webkit-flex-direction : row;
+     -webkit-flex-direction : row wrap;
   display : flex;
+  flex-direction : row wrap;
   justify-content : space-between;
 
   -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
   box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
 
+  @media #{$mobile} {
+    height: 3em;
+    .header-container {
+      height: 3em;
+      flex: 0 0 100%;
+      h1 {
+        text-align: center;
+      }
+    }
+    .navLinks-container {
+      display: none;
+    }
+  }
   .navLinks-container {
     ul {
       list-style : none;
@@ -201,6 +218,44 @@ label:active {
   }
 }
 
+#mobileLinks-container{
+  display:none;
+  background-color: $neutral-blue-color;
+  -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
+  box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
+
+  @media #{$mobile} {
+    display:flex;
+    justify-content: space-around;
+    ul {
+      list-style : none;
+      flex-flow : row wrap;
+      display : -webkit-flex;
+         -webkit-flex-direction : row;
+      display : flex;
+      justify-content : space-around;
+
+      li {
+        flex : 1 0 20;
+        text-align : center;
+        line-height: 3em;
+        text-transform: capitalize;
+        text-decoration: none;
+        color: #808080;
+        padding: 0 3vw;
+        a {
+          color: #808080;
+        }
+
+        a:hover {
+          color : $goldfish-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
 #loggedIn {
   flex : 1 0 20;
   align-self : flex-end;
@@ -236,7 +291,6 @@ label:active {
 }
 .new-task {
   margin:0;
-
   fieldset{
     display : -webkit-flex;
        -webkit-flex-direction : row;
@@ -248,11 +302,16 @@ label:active {
       display:flex;
       flex-flow: row nowrap;
       justify-content: space-around;
+      @media #{$mobile} {
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        div {
+          margin: 0 1em;
+        }
+      }
+
     }
-    // padding-bottom: 2em;
-    // -webkit-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
-    // -moz-box-shadow: inset 0 -7px 7px -4px rgba(0,0,0,0.2);
-    // box-shadow: inset 0 7px -7px -4px rgba(0,0,0,0.2);
   }
 
 }
@@ -399,9 +458,6 @@ label:active {
     height : 2em;
     line-height : 2em;
   }
-  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
-  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
-  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
 }
 
   .temp-archive{

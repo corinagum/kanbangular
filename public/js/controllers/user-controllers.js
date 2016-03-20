@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('UserController', ['$scope', 'UserService', '$location', function ($scope, UserService, $location) {
+  .controller('UserController', ['$scope', 'UserService', '$location', '$window',function ($scope, UserService, $location, $window) {
 
     $scope.isLoggedIn = function() {
       if($scope.loggedIn === "Not logged in") {
@@ -69,5 +69,21 @@ angular.module('app')
       $scope.loginMessage = null;
       $scope.registerMessage = null;
     };
+
+    $scope.$watch(function(){
+      return $window.innerWidth;
+    }, function(value){
+      if(value < 800) {
+        $scope.mobileToggleNewTask = false;
+
+        $scope.mobileShowHideNewTask = function(){
+          $scope.mobileToggleNewTask = !$scope.mobileToggleNewTask;
+          console.log($scope.mobileToggleNewTask);
+        };
+      } else {
+        $scope.mobileToggleNewTask = true;
+        $scope.mobileShowHideNewTask = function(){};
+      }
+    });
 
 }]);

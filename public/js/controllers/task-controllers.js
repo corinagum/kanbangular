@@ -95,8 +95,9 @@ angular.module('app')
     }, function(value){
       if(value < 800) {
         $scope.mobileToggleToDo = true;
-        $scope.mobileToggleInProgress = false;
-        $scope.mobileToggleDone = false;
+        $scope.mobileToggleInProgress = true;
+        $scope.mobileToggleDone = true;
+        $scope.mobileToggleNewTask = false;
 
 
         $scope.mobileShowHideToDo = function(){
@@ -116,6 +117,10 @@ angular.module('app')
           $scope.mobileToggleInProgress = false;
           $scope.mobileToggleDone = !$scope.mobileToggleDone;
         };
+        $scope.mobileShowHideNewTask = function(){
+          $scope.mobileToggleNewTask = !$scope.mobileToggleNewTask;
+          console.log($scope.mobileToggleNewTask);
+        };
       } else {
         $scope.mobileToggleToDo = true;
         $scope.mobileToggleInProgress = true;
@@ -124,6 +129,7 @@ angular.module('app')
         $scope.mobileShowHideToDo = function(){};
         $scope.mobileShowHideInProgress = function(){};
         $scope.mobileShowHideDone = function(){};
+        $scope.mobileShowHideNewTask = function(){};
       }
     });
 
