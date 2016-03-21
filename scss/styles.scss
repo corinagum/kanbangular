@@ -104,6 +104,7 @@ button {
   text-align: center;
   border: none;
   background-color: transparent;
+  color:#808080;
 
   webkit-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
@@ -121,9 +122,9 @@ button:focus {
 button:hover{
   background-color: $bright-blue-color;
   color: $white;
-  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
-  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
-  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+  box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
   webkit-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
   webkit-transition: background-color 0.2s;
@@ -289,6 +290,40 @@ label:active {
     }
   }
 }
+
+#to-do-task-card{
+  @media #{$large} {
+   visibility: visible;
+  }
+
+}
+#in-progress-task-card{
+  @media #{$large} {
+   visibility: visible;
+  }
+}
+#done-task-card{
+  @media #{$large} {
+   visibility: visible;
+  }
+}
+
+#footer {
+  min-height : 50px;
+}//id's
+
+  //CLASSES
+.commit {
+  margin : 0;
+  text-align: center;
+}
+
+.login-register {
+  input {
+    width: 100%
+  }
+}
+
 .new-task {
   margin:0;
   fieldset{
@@ -310,28 +345,9 @@ label:active {
           margin: 0 1em;
         }
       }
-
     }
   }
-
 }
-
-.login-register {
-  input {
-    width: 100%
-  }
-}
-
-#footer {
-  min-height : 50px;
-}//id's
-
-  //CLASSES
-.commit {
-  margin : 0;
-  text-align: center;
-}
-
 .status-message {
   padding: 1em;
   text-align : center;
@@ -348,10 +364,47 @@ label:active {
   transition: background-color 0.75s;
   webkit-transition: color 0.75s;
   transition: color 0.75s;
-  color:#555555;
+  color:#cccccc;
+  border: 0px;
 }
 
 .btn:hover {
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  color: $bright-blue-color;
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s;
+}
+
+.btn:target {
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  color: $bright-blue-color;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s;
+}
+.btn:focus {
+  outline: none;
+  background-color:white;
+}
+.btn-primary {
+  margin-top: 0.75em;
+  background-color: $neutral-blue-color;
+  border: none;
+  border-radius: none;
+  line-height: 1em;
+  vertical-align: middle;
+  color: #999999;
+}
+.btn-primary:hover {
   -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
   -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
   box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.7);
@@ -364,18 +417,6 @@ label:active {
   color: $white;
   background-color: $bright-blue-color;
 }
-.btn:focus {
-  outline: none;
-}
-.btn-primary {
-  margin-top: 0.75em;
-  background-color: $neutral-blue-color;
-  border: none;
-  border-radius: none;
-  line-height: 1em;
-  vertical-align: middle;
-}
-
 
 
 .tasks {
@@ -452,6 +493,9 @@ label:active {
   padding-left : 30px;
   @media #{$large} {
     max-width : 33vw;
+    -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+    -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
+    box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
   }
 
   p {
@@ -473,7 +517,7 @@ label:active {
     }
 
   .editable-buttons {
-    vertical-align: middle;
+    vertical-align: top;
   }
 
   .editable-click {
@@ -497,28 +541,27 @@ label:active {
 
   ////////// ANIMATIONS \\\\\\\\\\\\\
 
-.ng-enter {
-  transition-delay: 0.25s;
-  transition:0.25s linear all;
-  opacity:0;
-}
-.ng-enter.ng-enter-active {
-  transition-delay: 0.25s;
-  opacity:1;
-}
-#to-do-task-card{
-  @media #{$large} {
-   visibility: visible;
-  }
-
-}
-#in-progress-task-card{
-  @media #{$large} {
-   visibility: visible;
-  }
-}
-#done-task-card{
-  @media #{$large} {
-   visibility: visible;
-  }
-}
+// .ng-enter {
+//   transition:0.025s linear all;
+//   -webkit-transition:0.025s linear all;
+//   -moz-transition:0.025s linear all;
+//   transition-delay: 0.025s;
+//   -webkit-transition-delay: 0.025s;
+//   -moz-transition-delay: 0.025s;
+//   opacity:0.5;
+// }
+// .ng-leave{
+//   transition:0.025s linear all;
+//   -webkit-transition:0.025s linear all;
+//   -moz-transition:0.025s linear all;
+//   transition-delay: 0.025s;
+//   -webkit-transition-delay: 0.025s;
+//   -moz-transition-delay: 0.025s;
+//   opacity:0.5;
+// }
+// .ng-enter.ng-enter-active {
+//   transition-delay: 0.025s;
+//   -webkit-transition-delay: 0.025s;
+//   -moz-transition-delay: 0.025s;
+//   opacity:1;
+// }

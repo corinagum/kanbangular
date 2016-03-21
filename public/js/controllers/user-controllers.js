@@ -74,15 +74,15 @@ angular.module('app')
       return $window.innerWidth;
     }, function(value){
       if(value < 800) {
-        $scope.mobileToggleNewTask = false;
+        $rootScope.mobileToggleNewTask = false;
 
-        $scope.mobileShowHideNewTask = function(){
-          $scope.mobileToggleNewTask = !$scope.mobileToggleNewTask;
-          console.log($scope.mobileToggleNewTask);
+        $rootScope.mobileShowHideNewTask = function(){
+          $rootScope.mobileToggleNewTask = !$rootScope.mobileToggleNewTask;
+          console.log($rootScope.mobileToggleNewTask);
         };
       } else {
-        $scope.mobileToggleNewTask = true;
-        $scope.mobileShowHideNewTask = function(){};
+        $rootScope.mobileToggleNewTask = true;
+        $rootScope.mobileShowHideNewTask = function(){};
       }
     });
 

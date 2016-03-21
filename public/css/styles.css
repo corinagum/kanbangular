@@ -108,6 +108,7 @@ button {
   text-align: center;
   border: none;
   background-color: transparent;
+  color: #808080;
   webkit-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
   webkit-transition: background-color 0.2s;
@@ -122,9 +123,9 @@ button:focus {
 button:hover {
   background-color: #69D2E7;
   color: #ffffff;
-  -webkit-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.7);
-  box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
   webkit-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
   webkit-transition: background-color 0.2s;
@@ -256,6 +257,28 @@ label:active {
         flex-basis: auto;
         min-width: 30vw; } }
 
+@media only screen and (min-width: 800px) {
+  #to-do-task-card {
+    visibility: visible; } }
+
+@media only screen and (min-width: 800px) {
+  #in-progress-task-card {
+    visibility: visible; } }
+
+@media only screen and (min-width: 800px) {
+  #done-task-card {
+    visibility: visible; } }
+
+#footer {
+  min-height: 50px; }
+
+.commit {
+  margin: 0;
+  text-align: center; }
+
+.login-register input {
+  width: 100%; }
+
 .new-task {
   margin: 0; }
   .new-task fieldset {
@@ -277,16 +300,6 @@ label:active {
           .new-task fieldset #fieldset-container div {
             margin: 0 1em; } }
 
-.login-register input {
-  width: 100%; }
-
-#footer {
-  min-height: 50px; }
-
-.commit {
-  margin: 0;
-  text-align: center; }
-
 .status-message {
   padding: 1em;
   text-align: center; }
@@ -302,9 +315,45 @@ label:active {
   transition: background-color 0.75s;
   webkit-transition: color 0.75s;
   transition: color 0.75s;
-  color: #555555; }
+  color: #cccccc;
+  border: 0px; }
 
 .btn:hover {
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  color: #69D2E7;
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent;
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s; }
+
+.btn:target {
+  webkit-transition: color 0.75s;
+  transition: color 0.75s;
+  color: #69D2E7;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent;
+  webkit-transition: box-shadow 0.75s;
+  transition: box-shadow 0.75s; }
+
+.btn:focus {
+  outline: none;
+  background-color: white; }
+
+.btn-primary {
+  margin-top: 0.75em;
+  background-color: #A7DBD8;
+  border: none;
+  border-radius: none;
+  line-height: 1em;
+  vertical-align: middle;
+  color: #999999; }
+
+.btn-primary:hover {
   -webkit-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.7);
   box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.7);
@@ -316,17 +365,6 @@ label:active {
   transition: color 0.75s;
   color: #ffffff;
   background-color: #69D2E7; }
-
-.btn:focus {
-  outline: none; }
-
-.btn-primary {
-  margin-top: 0.75em;
-  background-color: #A7DBD8;
-  border: none;
-  border-radius: none;
-  line-height: 1em;
-  vertical-align: middle; }
 
 .tasks {
   padding-left: 0;
@@ -389,7 +427,10 @@ label:active {
   padding-left: 30px; }
   @media only screen and (min-width: 800px) {
     .auth {
-      max-width: 33vw; } }
+      max-width: 33vw;
+      -webkit-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
+      box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4); } }
   .auth p {
     height: 2em;
     line-height: 2em; }
@@ -405,7 +446,7 @@ label:active {
   padding-top: 0.75em; }
 
 .editable-buttons {
-  vertical-align: middle; }
+  vertical-align: top; }
 
 .editable-click {
   border-bottom: 1px dashed #cccccc;
@@ -422,24 +463,3 @@ label:active {
   margin-top: 0.75em;
   outline: 0;
   height: 2.4em; }
-
-.ng-enter {
-  transition-delay: 0.25s;
-  transition: 0.25s linear all;
-  opacity: 0; }
-
-.ng-enter.ng-enter-active {
-  transition-delay: 0.25s;
-  opacity: 1; }
-
-@media only screen and (min-width: 800px) {
-  #to-do-task-card {
-    visibility: visible; } }
-
-@media only screen and (min-width: 800px) {
-  #in-progress-task-card {
-    visibility: visible; } }
-
-@media only screen and (min-width: 800px) {
-  #done-task-card {
-    visibility: visible; } }
