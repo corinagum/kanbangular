@@ -60,14 +60,14 @@ input {
   padding: 5px;
   display: block;
   border: none;
-  border-bottom: 1px solid #808080;
   width: auto;
+  border-bottom: 1px solid #808080;
   font-size: .9em;
   webkit-transition: border .2s ease-out;
   transition: border .2s ease-out;
   @media #{$mobile} {
-    // padding: 0;
-    max-width:37.5em;
+    min-width: 70vw;
+    margin:0;
   }
 }
 
@@ -84,8 +84,11 @@ input:active{
 }
 
 select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+  appearance: none;
   margin-right: 1em;
-  background-color: rgba(255, 255, 255, 0.90);
+  background: url('../assets/select-arrow.png') no-repeat right;
    width: 100%;
    padding: .5em;
    border: 1px solid #f2f2f2;
@@ -330,7 +333,12 @@ label:active {
 }
 
 .new-task {
-  margin:0;
+  margin:auto;
+  @media #{$mobile} {
+    margin-top: 2em;
+    max-width:95vw;
+    padding: 0 2em;
+  }
   fieldset{
     display : -webkit-flex;
        -webkit-flex-direction : row;
@@ -347,10 +355,7 @@ label:active {
         display:flex;
         flex-flow: column nowrap;
         justify-content: space-around;
-        div {
-          margin: 0;
-          padding: 0 1.5em;
-        }
+
       }
     }
   }
@@ -501,8 +506,8 @@ label:active {
   border: 1px solid #fafafa;
   padding : 20px;
   padding-left : 30px;
+  max-width : 37.8em;
   @media #{$large} {
-    max-width : 33vw;
     -webkit-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
     -moz-box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
     box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.4);
@@ -534,6 +539,7 @@ label:active {
     border-bottom:1px dashed #cccccc;
     color: #808080;
     height : 2em;
+
   }
 
   .editable-click:hover {
@@ -547,6 +553,7 @@ label:active {
     margin-top: 0.75em;
     outline:0;
     height:2.4em;
+
   }
 
   ////////// ANIMATIONS \\\\\\\\\\\\\
