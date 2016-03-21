@@ -76,7 +76,7 @@ input {
   transition: border .2s ease-out; }
   @media only screen and (max-width: 800px) {
     input {
-      padding: 0; } }
+      max-width: 75%; } }
 
 input:focus {
   outline: 0;
@@ -91,10 +91,13 @@ select {
   margin-right: 1em;
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
-  padding: 5px;
+  padding: .5em;
   border: 1px solid #f2f2f2;
   border-radius: 2px;
   height: 2rem; }
+  @media only screen and (max-width: 800px) {
+    select {
+      max-width: 50%; } }
 
 select:focus {
   outline: 1px solid #E0E4CC; }
@@ -286,7 +289,8 @@ label:active {
     -webkit-flex-direction: row;
     display: flex;
     flex-flow: column wrap;
-    justify-content: center; }
+    justify-content: center;
+    margin: 0; }
     .new-task fieldset #fieldset-container {
       margin: 1em 0;
       display: flex;
@@ -298,7 +302,8 @@ label:active {
           flex-flow: column nowrap;
           justify-content: space-around; }
           .new-task fieldset #fieldset-container div {
-            margin: 0 1em; } }
+            margin: 0;
+            padding: 0 1.5em; } }
 
 .status-message {
   padding: 1em;

@@ -66,7 +66,8 @@ input {
   webkit-transition: border .2s ease-out;
   transition: border .2s ease-out;
   @media #{$mobile} {
-    padding: 0;
+    // padding: 0;
+    max-width:75%;
   }
 }
 
@@ -86,10 +87,14 @@ select {
   margin-right: 1em;
   background-color: rgba(255, 255, 255, 0.90);
    width: 100%;
-   padding: 5px;
+   padding: .5em;
    border: 1px solid #f2f2f2;
    border-radius: 2px;
    height: 2rem;
+   @media #{$mobile} {
+     // padding: 0;
+     max-width:50%;
+   }
 }
 select:focus {
   outline: 1px solid $neutral-color;
@@ -332,6 +337,7 @@ label:active {
     display : flex;
     flex-flow : column wrap;
     justify-content : center;
+    margin: 0;
     #fieldset-container{
       margin: 1em 0;
       display:flex;
@@ -342,7 +348,8 @@ label:active {
         flex-flow: column nowrap;
         justify-content: space-around;
         div {
-          margin: 0 1em;
+          margin: 0;
+          padding: 0 1.5em;
         }
       }
     }
