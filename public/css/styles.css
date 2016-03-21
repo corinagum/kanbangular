@@ -76,7 +76,7 @@ input {
   transition: border .2s ease-out; }
   @media only screen and (max-width: 800px) {
     input {
-      max-width: 75%; } }
+      max-width: 37.5em; } }
 
 input:focus {
   outline: 0;
@@ -292,7 +292,7 @@ label:active {
     justify-content: center;
     margin: 0; }
     .new-task fieldset #fieldset-container {
-      margin: 1em 0;
+      margin: 0;
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-around; }
@@ -382,6 +382,7 @@ label:active {
   border: 1px solid #fafafa;
   padding: 1.5em;
   overflow: hidden;
+  max-width: 37.5em;
   -webkit-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4);
   box-shadow: 5px 5px 14px -4px rgba(0, 0, 0, 0.4); }

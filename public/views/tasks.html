@@ -1,7 +1,6 @@
   <!-- <h2>New Task</h2> -->
   <div ng-hide="!isLoggedIn()" id="loggedIn" class="new-task" >
-<!--       <form ng-show="mobileToggleNewTask" ng-submit="addTask(new_task); deleteMessage(); deleteAddTaskMessage(); new_task=null"> -->
-        <form ng-submit="addTask(new_task); deleteMessage(); deleteAddTaskMessage(); new_task=null">
+      <form ng-show="mobileToggleNewTask" ng-submit="addTask(new_task); deleteMessage(); deleteAddTaskMessage(); new_task=null">
         <div ng-cloak class="loggedIn-message">{{loggedIn}} Use this form to add a task. &nbsp;&nbsp;&nbsp; {{message}} {{addTaskMessage}}</div>
         <fieldset>
          <div id="fieldset-container">
