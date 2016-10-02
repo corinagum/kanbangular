@@ -1,6 +1,6 @@
 # Kanbangular
 =====================
-### [kanbangular.herokuapp.com](kanbangular.herokuapp.com)
+### [kanbangular.herokuapp.com](http://kanbangular.herokuapp.com)
 
 ![screen shot 2016-03-09 at 2 02 17 pm](https://cloud.githubusercontent.com/assets/14900841/13654954/e897ef36-e5ff-11e5-860a-69124602da55.png)
 
