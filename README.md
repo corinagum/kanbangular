@@ -34,7 +34,7 @@ $ nodemon server.js
 This app does not have a seeder.
 
 ## User Guide
-The deployed version of this app is available at [kanbangular.herokuapp.com](kanbangular.herokuapp.com).
+The deployed version of this app is available at [kanbangular.herokuapp.com](http://kanbangular.herokuapp.com).
 
 1. First time users of this app should first create a login account to be able to post and edit tasks.
 2. Click the register button and fill out all fields. If you already have an account, click login and enter your username and password.
